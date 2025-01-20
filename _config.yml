@@ -1,15 +1,15 @@
-title:             Square Zero
-email:             sssurajsuraj@gmail.com
-description:       Silent Observations
-author:            J
+title:             Jim vd Heijden
+email:             230160@buas.nl
+description:       Graphics programmer
+author:            Jim
 #url:               "localhost:4000"
-url:               "http://squarezero.github.io/"
+url:               "https://j111m.github.io/"
 baseurl:
 
 # Social Profiles
-#twitter_username:  SBootstrap
-#github_username:   BlackrockDigital
-#facebook_username: StartBootstrap
+#twitter_username:  Jim
+github_username:   J111M
+#facebook_username: Jim
 
 # Build settings
 markdown:          kramdown
