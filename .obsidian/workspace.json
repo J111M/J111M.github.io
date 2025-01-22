@@ -20,6 +20,16 @@
               "icon": "lucide-file",
               "title": "2025-01-20-Ocean"
             }
+          },
+          {
+            "id": "ee326a32f16dc5ce",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "New tab"
+            }
           }
         ]
       }
@@ -164,24 +174,25 @@
   },
   "active": "9a5f715b6ad228f0",
   "lastOpenFiles": [
-    "img/ekokexp.png",
+    "img/eulersformula.png",
+    "img/hlt.png",
     "_posts/2025-01-20-Ocean.md",
+    "img/roadmap.png",
+    "img/pbrMaterial.png",
+    "img/pbrHelmet.png",
+    "img/oceanIMG.png",
+    "img/oceanBG.png",
+    "img/jacobianfoam.png",
     "img/initialspectrumformula.png",
+    "img/initialSpectrum.png",
+    "img/horizonzerodawn.mp4",
+    "img/FrustumCulling.mp4",
+    "img/Fig16-9s.jpg",
     "img/CalmOcean.mp4",
     "img/RoughOceanview.mp4",
-    "img/jacobianfoam.png",
-    "img/atlasrendereing.png",
-    "img/Shading.png",
-    "img/FrustumCulling.mp4",
-    "img/fftTexture.png",
-    "img/roadmap.png",
-    "img/slopemap.png",
-    "img/displacementMap.png",
-    "img/butterflyAlgorithm.png",
     "README.md",
     "img/seaofthieves.mp4",
     "img/c.mp4.opdownload",
-    "img/horizonzerodawn.mp4",
     "img/horizonzerodawn.mp4.opdownload"
   ]
 }
