@@ -136,7 +136,7 @@ There are multiple optimizations we can do which will mainly be focused on the a
 <video width="420" height="360" controls>
   <source src="/img/FrustumCulling.mp4" type="video/mp4">
 </video>
-Beside adding frustum culling the performance would also greatly benefit from adding tessellation this will give more vertices/detail up close and display less vertices further away where everything needs less detail.
+Beside adding frustum culling the performance would also greatly benefit from adding tessellation this will give more vertices/detail up close and display less vertices further away where everything doesn't need as much detail.
 ## Future improvement
 There are still a lot of things we can improve upon like:
 - Adding filtering for texture so everything looks less pixelated
