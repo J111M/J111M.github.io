@@ -11,14 +11,12 @@
             "id": "9a5f715b6ad228f0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "video",
               "state": {
-                "file": "_posts/2025-01-20-Ocean.md",
-                "mode": "source",
-                "source": false
+                "file": "img/roughocean.mp4"
               },
               "icon": "lucide-file",
-              "title": "2025-01-20-Ocean"
+              "title": "roughocean"
             }
           },
           {
@@ -174,9 +172,9 @@
   },
   "active": "9a5f715b6ad228f0",
   "lastOpenFiles": [
+    "_posts/2025-01-20-Ocean.md",
     "img/eulersformula.png",
     "img/hlt.png",
-    "_posts/2025-01-20-Ocean.md",
     "img/roadmap.png",
     "img/pbrMaterial.png",
     "img/pbrHelmet.png",
@@ -187,7 +185,6 @@
     "img/initialSpectrum.png",
     "img/horizonzerodawn.mp4",
     "img/FrustumCulling.mp4",
-    "img/Fig16-9s.jpg",
     "img/CalmOcean.mp4",
     "img/RoughOceanview.mp4",
     "README.md",
