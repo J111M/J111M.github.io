@@ -4,7 +4,6 @@ title: Dive into the deep secrets of rendering a realistic ocean.
 date: 2025-01-23 15:30:00
 categories: [Graphics, Ocean]
 ---
-
 ## Water in modern games
 How do modern games render water, I always asked myself? In this blog post I am going to explain the deep secrets of how big studios render water in detail. There are a lot of aspects and ways to make use of water so to make it a little simpler to follow I am going to focus on oceans in specific. Do keep in mind that this is not a tutorial, since the implementation is written in a custom ps5 engine I made at Breda university of applied sciences.
 
@@ -61,8 +60,8 @@ For this algorithm we need to sort the data so that the even and odd numbers are
  <img src="/img/shapes at 25-01-22 12.57.07.png" alt="Image" width="400"/>
 <br> Now that we have the data ordered correctly we have one last step left, and that is calculating the DFTs. The algorithm gains its speed by re-using the results of intermediate computations to compute multiple DFT outputs. Note that final outputs are obtained by a +/− combination of
  <img src="/img/ekokexp.png" alt="Image" width="150"/>
-<br> Ek | means even number, and k is the index
-<br> Ok | means on even number, and k is the index
+$E_k$ | means even number, and k is the index
+<br> $O_k$ | means on even number, and k is the index
 <br> N | is the size of the texture
 
 <img src="/img/butterflyAlgorithm.png" alt="Image" width="400"/>
@@ -87,23 +86,26 @@ To fix this we need to [permute](https://www.mathworks.com/help/matlab/ref/doubl
 
 ## How to apply these texture in practice
 We simply apply the displacement textures values before we transform our position to world space.
-<pre style="background-color: #ffffff4f;"><code>// pseudo code
+```hlsl
+// pseudo code
 float3 diplacement = sample.(DisplacementMap).xyz
 
 out.pos += diplacement;
 
 // out.pos to world space
-</code></pre>
+
+```
+
 
 And for the normals we sample the slope map like this
-<pre style="background-color: #ffffff4f;"><code>// pseudo code
+```hlsl
+// pseudo code
 float3 normal = sample.(slopemap).xyz
 
 // The slope map consist of only 2 IFFT so this mean it only has 2 values
 normal = normalize(float3(-normals.x, 1.0f, -normals.y)); 
 // y becomes the z of the normal since y will always be up unless you engine is structured differently
-</code></pre>
-
+```
 ## Shading
 I feel like it is also important to talk a little bit about how these games shade their water since they are not just using your average PBR shader they are also including environmental reflections and light scattering, in a [GDC talk]([Wakes, Explosions and Lighting: Interactive Water Simulation in Atlas](https://www.youtube.com/watch?v=Dqld965-Vv0)) from the developers of Atlas they talk about this in high detail.
 
