@@ -60,9 +60,10 @@ For this algorithm we need to sort the data so that the even and odd numbers are
  <img src="/img/shapes at 25-01-22 12.57.07.png" alt="Image" width="400"/>
 <br> Now that we have the data ordered correctly we have one last step left, and that is calculating the DFTs. The algorithm gains its speed by re-using the results of intermediate computations to compute multiple DFT outputs. Note that final outputs are obtained by a +/− combination of
  <img src="/img/ekokexp.png" alt="Image" width="150"/>
-$E_k$ | means even number, and k is the index
-<br> $O_k$ | means on even number, and k is the index
-<br> N | is the size of the texture
+
+Ek | means even number, and k is the index.
+Ok | means on even number, and k is the index.
+N | is the size of the texture.
 
 <img src="/img/butterflyAlgorithm.png" alt="Image" width="400"/>
  <br> *FFT butterfly computations for 8 pixel texture*
