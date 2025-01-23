@@ -1,20 +1,26 @@
-title:             Jim van der Heijden
-email:             230160@buas.nl
-description:       Graphics programmer
-author:            Jim
-#url:               "localhost:4000"
-url:               "https://j111m.github.io/"
-baseurl:
+title: Jekyll Serial Programmer
+markdown: kramdown
 
-# Social Profiles
-#twitter_username:  Jim
-github_username:   J111M
-#facebook_username: Jim
+# for atom feed
+author:
+  name: Sharad Raj Singh Maurya
+  email: dev_sharad@outlook.com
 
-# Build settings
-markdown:          kramdown
-paginate:          10
-paginate_path:     "/posts/page:num/"
 plugins:
+  - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-feed
-  - jekyll-paginate
+
+collections_dir: all_collections
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: "_posts"
+    values:
+      layout: "post"
+      permalink: /posts/:title/
+exclude: ["sitemap.xml", "feed.xml", "LICENSE", "README.md"]

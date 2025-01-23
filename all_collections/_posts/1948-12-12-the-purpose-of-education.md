@@ -1,0 +1,160 @@
+---
+layout: post
+title: Dive into the deep secrets of rendering a realistic ocean.
+date: 2025-01-23 15:30:00
+categories: [Graphics, Ocean]
+---
+
+## Water in modern games
+How do modern games render water, I always asked myself? In this blog post I am going to explain the deep secrets of how big studios render water in detail. There are a lot of aspects and ways to make use of water so to make it a little simpler to follow I am going to focus on oceans in specific. Do keep in mind that this is not a tutorial, since the implementation is written in a custom ps5 engine I made at Breda university of applied sciences.
+
+So let's start at the beginning by looking at a couple implementations of games that make great use of an ocean.
+<video width="420" height="360" controls>
+  <source src="/img/horizonzerodawn.mp4" type="video/mp4">
+</video>
+[*Horizon forbidden west swimming through a rough ocean*](https://www.youtube.com/watch?v=XT-xhCNalPc)
+
+
+<video width="420" height="360" controls>
+  <source src="/img/seaofthieves.mp4" type="video/mp4">
+</video>
+[*Sea of thieves ocean with light scattering through the waves*](https://www.youtube.com/watch?v=aGogFt4bhTM)
+
+## The big question is how can we achieve this?
+### What do we need
+There are 2 major components that we need to create a realistic looking ocean the first component is an oceanographic spectra and the second component is the fast Fourier transform which I will explain later on in this post.
+### Setting up the energy spectrum
+So what is this Oceanographic spectra? It is formula that simulates ocean waves under certain conditions, these waves are produced by different wind speeds over big areas and gravity lowers the wave amplitudes. Luckily for us we don't have to get the data from these ocean ourselves since other people did the work for us. I decided to use the [JONSWAP](https://www.codecogs.com/library/engineering/fluid_mechanics/waves/spectra/jonswap.php) (Joint North Sea Wave Project) spectrum for my implementation since it has a lot of artistical control and is based of accurate data of the north sea.
+
+<img src="/img/Fig16-9s.jpg" alt="Image" width="400"/>
+<br>*JONSWAP spectra wave amplitude at certain frequency*
+
+Now that we have our energy spectrum function we want to randomly sample it and put all the data into a texture this is done with the formula:
+
+ <img src="/img/initialspectrumformula.png" alt="Image" width="250"/>
+ 
+P(k) | Is the Wave energy spectrum of choice
+
+(ξr​+ξi​) | are the Gaussian distributed real and imaginary random numbers
+
+<br>We run this formula for every pixel of the texture so performance scales depending how detailed you want the waves to look, I am using a 512x512 texture since this is perfect for real-time games. The output of this will look something relatively close to this texture depending on what energy spectrum you used.
+
+<img src="/img/initialSpectrum.png" alt="Image" width="400"/>
+<br>The origin of the spectrum is in the center, the distance from the origin is the frequency, the pixels value is the amplitude and the direction from the origin to the pixel is the direction of the wave. 
+
+The energy spectrum texture only has to be computed once unless you change the parameters, but if we want our waves to move we have to update the spectrum by multiplying it with Euler's formula. 
+<img src="/img/hlt.png" alt="Image" width="200"/>
+
+<img src="/img/eulersformula.png" alt="Image" width="400"/>
+
+*Visual representation of Euler's formula in 3d space*
+### Cooley-Tukey FFT algorithm
+Now that we have the frequencies we want to convert this to something visual we can do this with the Inverse Fast Fourier Transform, which converts our frequency domain texture to the time domain.
+
+The IFFT is an algorithm that efficiently computes the DFT(discrete Fourier transform) which makes it faster for real-time, since the DFT is used to transform signals from the time domain into the frequency domain we want to calculate it's inverse.
+
+The most common algorithm to calculate the FFT is the [Cooley-Tukey algorithm](https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm) and we use the radix-2 DIT case which is the simplest form of the algorithm. The algorithm divides a DFT of size N into two interleaved DFTs (hence the name "radix-2") of size N/2 with each recursive stage
+([wikipedia](https://en.wikipedia.org/wiki/Cooley%E2%80%93Tukey_FFT_algorithm)), there are a total of log2(N) stages needed in order to transform the signal to the time domain. In our case N is the size of our texture 512x512px.
+
+For this algorithm we need to sort the data so that the even and odd numbers are grouped together we do this by doing a binary reversal on the index of the pixel so px1, px2, ..., after reversing the binaries we simply count up the binary numbers and we are left with the first half being even numbers and the second half being odd.
+
+ <img src="/img/shapes at 25-01-22 12.57.07.png" alt="Image" width="400"/>
+<br> Now that we have the data ordered correctly we have one last step left, and that is calculating the DFTs. The algorithm gains its speed by re-using the results of intermediate computations to compute multiple DFT outputs. Note that final outputs are obtained by a +/− combination of
+ <img src="/img/ekokexp.png" alt="Image" width="150"/>
+<br> Ek | means even number, and k is the index
+<br> Ok | means on even number, and k is the index
+<br> N | is the size of the texture
+
+<img src="/img/butterflyAlgorithm.png" alt="Image" width="400"/>
+ <br> *FFT butterfly computations for 8 pixel texture*
+
+The image shows a rough structure of how it would look like for an 8 texture size but in our case it would be a lot bigger with a 512 texture size. We calculate a total of 5 IFFT 3 for the displacement and 2 IFFT for the slope map which is calculated with the derivatives.
+
+It is not necessary to know how it exactly works but If you are looking for an even more in depth explanation I would recommend watching this [video](https://www.youtube.com/watch?v=h7apO7q16V0)
+## Creating a displacement and slope map
+The last step is to create 2 textures 1 texture for the vertices displacement and a slope map which will be used for the normals. We arranged the data before our calculation in a way that is ideal for the Cooley-Tukey algorithm but this results in a weird looking texture since the data is not in the correct order.
+
+<img src="/img/slopemapfft.png" alt="Image" width="400"/>
+<br> *slope texture before permute*
+
+To fix this we need to [permute](https://www.mathworks.com/help/matlab/ref/double.permute.html) the data according to the pixel id. After storing everything inside the texture we will be left with 2 textures.
+
+<img src="/img/displacementMap.png" alt="Image" width="400"/>
+<br> *Final displacement map*
+<br>
+ <img src="/img/slopemap.png" alt="Image" width="400"/>
+ <br> *Final slope map*
+
+## How to apply these texture in practice
+We simply apply the displacement textures values before we transform our position to world space.
+<pre style="background-color: #ffffff4f;"><code>// pseudo code
+float3 diplacement = sample.(DisplacementMap).xyz
+
+out.pos += diplacement;
+
+// out.pos to world space
+</code></pre>
+
+And for the normals we sample the slope map like this
+<pre style="background-color: #ffffff4f;"><code>// pseudo code
+float3 normal = sample.(slopemap).xyz
+
+// The slope map consist of only 2 IFFT so this mean it only has 2 values
+normal = normalize(float3(-normals.x, 1.0f, -normals.y)); 
+// y becomes the z of the normal since y will always be up unless you engine is structured differently
+</code></pre>
+
+## Shading
+I feel like it is also important to talk a little bit about how these games shade their water since they are not just using your average PBR shader they are also including environmental reflections and light scattering, in a [GDC talk]([Wakes, Explosions and Lighting: Interactive Water Simulation in Atlas](https://www.youtube.com/watch?v=Dqld965-Vv0)) from the developers of Atlas they talk about this in high detail.
+
+<img src="/img/atlasrendereing.png" alt="Image" width="400"/>
+
+In short they talk about approximating light scattering through the wave since it would be to expensive to calculate it accurately. The fake scattering by using the formula bellow 
+
+ <img src="/img/Shading.png" alt="Image" width="400"/>
+<br>Atlas also talks a little bit about foam where they calculate the Jacobian of the displacement with this calculation u can see where the amplitude of the weaves curls over if it curls over we apply a blur and fade to the foam, for convenience sake we store this in the displacements alpha channel.
+
+<img src="/img/jacobianfoam.png" alt="Image" width="400"/>
+
+## Final result
+<video width="420" height="360" controls>
+  <source src="/img/CalmOcean.mp4" type="video/mp4">
+</video>
+
+<video width="420" height="360" controls>
+  <source src="/img/roughocean.mp4" type="video/mp4">
+</video>
+<video width="420" height="360" controls>
+  <source src="/img/Watershowcase.mp4" type="video/mp4">
+</video>
+## Optimizations
+There are multiple optimizations we can do which will mainly be focused on the amount of vertices visible we can do a simple CPU frustum culling which will work for most type of games where only a small part of the ocean is visible at a time. This works by having an AABB bound for each tile, so the bottom left position of the tile and the top right position of the tile, if they are in the view frustum they will be drawn otherwise not.
+
+<video width="420" height="360" controls>
+  <source src="/img/FrustumCulling.mp4" type="video/mp4">
+</video>
+Beside adding frustum culling the performance would also greatly benefit from adding tessellation this will give more vertices/detail up close and display less vertices further away where everything needs less detail.
+## Future improvement
+There are still a lot of things we can improve upon like:
+- Adding filtering for texture so everything looks less pixelated
+- Adding tessellation for better performance
+- Having buoyancy so ships and objects can float
+- Adding wakes and water displacement
+- A simple distance fog
+- A post process filter for when the camera is under the waves
+- Fixing the tiling issues
+- Adding particle splash effects on wave collision
+
+## Conclusion
+I hope I gave a good inside, on how some of these big studios might have implemented realistic oceans in their games and what steps you could follow to get the basics of a realistic looking water implementation running, and as you can see above there are still a lot of improvements we can make in the future to make it more interactable which sell's the illusion even more.
+
+I hope this article was helpful in giving a good insight on this topic and if there is anything you still have questions on just send an e-mail to 230160@buas.nl.
+
+Here are some valuable resources that greatly help me creating my final product:
+
+- [Simulating ocean water - Jerry Tessendorf](https://people.computing.clemson.edu/~jtessen/reports/papers_files/coursenotes2004.pdf)
+-  [Wakes, explosions and lighting interactive water simulation in Atlas](https://gpuopen.com/gdc-presentations/2019/gdc-2019-agtd6-interactive-water-simulation-in-atlas.pdf)
+- [Ocean waves simulation with Fast Fourier transform - Jump Trajectory](https://www.youtube.com/watch?v=kGEqaX4Y4bQ) This was a big inspiration for making the project
+- [konstantinkz.github.io/water-rendering-tutorial/](https://konstantinkz.github.io/water-rendering-tutorial/) Great blog which gave a good explanation on the shading module of the water
+- [Simulating the entire ocean - Acerola](https://www.youtube.com/watch?v=yPfagLeUa7k)
+- [Ocean-Wave Spectra - wiki waves](https://wikiwaves.org/Ocean-Wave_Spectra)
