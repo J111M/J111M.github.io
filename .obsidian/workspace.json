@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "all_collections/_posts/2025-01-23-Ocean.md",
+                "file": "all_collections/_posts/2026-01-14-Grass.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2025-01-23-Ocean"
+              "title": "2026-01-14-Grass"
             }
           }
         ]
@@ -40,7 +40,8 @@
             "state": {
               "type": "file-explorer",
               "state": {
-                "sortOrder": "alphabetical"
+                "sortOrder": "alphabetical",
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -154,6 +155,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -162,8 +164,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "be4222ec34906419",
+  "active": "ee326a32f16dc5ce",
   "lastOpenFiles": [
+    "all_collections/_posts/2025-01-23-Ocean.md",
     "img/Logo BUas_RGB.png",
     "screenshots/pc_blog_lm.png",
     "screenshots/pc_post.png",
@@ -189,7 +192,6 @@
     "assets/icons/telegram.png",
     "assets/icons/linkedin.png",
     "assets/icons/instagram.png",
-    "assets/icons/github.png",
     "all_collections/_posts/2021-11-04-jekyll-markdown.md",
     "404.md",
     "README.md"
