@@ -73,3 +73,11 @@ html[data-mode='light'] {
     --card-shadow: 0 2px 8px rgba(8 10 16 / 45%), 0 0 0 1px rgba(90 110 150 / 10%);
   }
 }
+
+/* Ensure three columns on medium and larger screens for project listings */
+@media (min-width: 768px) {
+  .projects-grid > .col {
+    flex: 0 0 33.333333% !important;
+    max-width: 33.333333% !important;
+  }
+}
