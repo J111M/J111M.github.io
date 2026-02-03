@@ -6,7 +6,7 @@ layout: default
 
 <h2>Projects</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 mb-5 projects-grid">
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-3 g-4 mb-5">
   {% assign sorted_projects = site.projects | sort: 'order' %}
   {% for project in sorted_projects %}
     <div class="col">
