@@ -1,7 +1,7 @@
 ---
 title: "Broomstick Blitz"
 description: "A real-time renderer built from scratch using DirectX 12 and C++."
-image: /assets/img/projects/grass.png
+image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12

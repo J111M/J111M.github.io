@@ -1,7 +1,7 @@
 ---
 title: "Firefly engine"
 description: "A real-time renderer build for PC and PS5"
-image: /assets/img/projects/grass.png
+image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Engine
   - 🔧 DirectX 12 | PS5

@@ -1,7 +1,7 @@
 ---
 title: "Nakon"
 description: "Fps game"
-image: /assets/img/projects/grass.png
+image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12

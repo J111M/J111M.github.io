@@ -74,10 +74,4 @@ html[data-mode='light'] {
   }
 }
 
-/* Ensure three columns on medium and larger screens for project listings */
-@media (min-width: 768px) {
-  .projects-grid > .col {
-    flex: 0 0 33.333333% !important;
-    max-width: 33.333333% !important;
-  }
-}
+/* Bootstrap row-cols-md-3 handles responsive 3-column layout */

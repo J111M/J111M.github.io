@@ -1,7 +1,7 @@
 ---
 title: "Godot ray-tracing"
 description: "Modified Godot's source code and implemented hardware-accelerated Vulkan ray-tracing"
-image: /assets/img/projects/grass.png
+image: /assets/img/projects/firefly.png
 tags:
   - 🎮 Godot
   - 🔧 Vulkan

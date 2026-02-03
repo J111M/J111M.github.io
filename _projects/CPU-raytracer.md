@@ -1,7 +1,7 @@
 ---
 title: "CPU ray-tracer"
 description: "Ocean simmulation on the ps5"
-image: /assets/img/projects/grass.png
+image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12
