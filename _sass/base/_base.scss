@@ -262,6 +262,7 @@ main {
     background: var(--shimmer-bg);
     height: 100%;
     width: 100%;
+    z-index: -1;
     -webkit-animation: shimmer 1.3s infinite;
     animation: shimmer 1.3s infinite;
   }

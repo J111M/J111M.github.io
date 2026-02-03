@@ -8,7 +8,7 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 1
+order: 2
 ---
 
 Sample

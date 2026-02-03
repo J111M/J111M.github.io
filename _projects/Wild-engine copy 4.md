@@ -1,6 +1,6 @@
 ---
 title: "sample2"
-description: "this is a samsple"
+description: "this is a sample"
 image: /assets/img/projects/grass.png
 tags:
   - 🚀 Personal
@@ -8,8 +8,9 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 3
+order: 5
 ---
+
 Sample
 
 ## Features
