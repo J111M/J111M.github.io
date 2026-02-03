@@ -1,0 +1,38 @@
+---
+layout: page
+icon: fas fa-code
+order: 1
+title: Projects
+---
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+{% assign sorted_projects = site.projects | sort: 'order' %}
+{% for project in sorted_projects %}
+  <article class="card-wrapper card">
+    <a href="{{ project.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
+      {% if project.image %}
+      <div class="col-md-5">
+        <img src="{{ project.image | relative_url }}" alt="{{ project.title }}">
+      </div>
+      <div class="col-md-7">
+      {% else %}
+      <div class="col-md-12">
+      {% endif %}
+        <div class="card-body d-flex flex-column">
+          <h1 class="card-title my-2 mt-md-0">{{ project.title }}</h1>
+          <div class="card-text content mt-0 mb-3">
+            <p>{{ project.description }}</p>
+          </div>
+          <div class="post-meta flex-grow-1 d-flex align-items-end">
+            <div class="me-auto">
+              {% for tag in project.tags %}
+                <span class="me-2">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </a>
+  </article>
+{% endfor %}
+</div>
