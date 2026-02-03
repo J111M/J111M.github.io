@@ -1,6 +1,6 @@
 ---
-title: "sample2"
-description: "this is a sample"
+title: "Nakon"
+description: "Fps game"
 image: /assets/img/projects/grass.png
 tags:
   - 🚀 Personal
@@ -8,9 +8,8 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 4
+order: 3
 ---
-
 Sample
 
 ## Features

@@ -55,21 +55,21 @@
 
 /* Dark mode adjustments */
 html[data-mode='dark'] .project-card {
-  --card-bg: #1e1e1e;
-  --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --card-bg: #1e2028;
+  --card-shadow: 0 2px 8px rgba(8 10 16 / 45%), 0 0 0 1px rgba(90 110 150 / 10%);
 }
 
 html:not([data-mode]),
 html[data-mode='light'] {
   .project-card {
     --card-bg: #ffffff;
-    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.233);
   }
 }
 
 @media (prefers-color-scheme: dark) {
   html:not([data-mode]) .project-card {
-    --card-bg: #1e1e1e;
-    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --card-bg: #17181f;
+    --card-shadow: 0 2px 8px rgba(8 10 16 / 45%), 0 0 0 1px rgba(90 110 150 / 10%);
   }
 }

@@ -1,6 +1,6 @@
 ---
-title: "sample2"
-description: "this is a samsple"
+title: "Broomstick Blitz"
+description: "A real-time renderer built from scratch using DirectX 12 and C++."
 image: /assets/img/projects/grass.png
 tags:
   - 🚀 Personal
@@ -8,8 +8,10 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 3
+  - ⏱️ C++
+order: 4
 ---
+
 Sample
 
 ## Features

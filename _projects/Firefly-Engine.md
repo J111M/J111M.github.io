@@ -1,14 +1,14 @@
 ---
-title: "sample2"
-description: "this is a sample"
+title: "Firefly engine"
+description: "A real-time renderer build for PC and PS5"
 image: /assets/img/projects/grass.png
 tags:
-  - 🚀 Personal
-  - 🔧 DirectX 12
-  - 👤 Solo
+  - 🚀 Engine
+  - 🔧 DirectX 12 | PS5
+  - 👤 Team
   - 💻 PC
   - ⏱️ In Progress
-order: 5
+order: 1
 ---
 
 Sample

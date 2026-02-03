@@ -1,6 +1,6 @@
 ---
-title: "sample2"
-description: "this is a sample5"
+title: "Ocean simmulation based on Jtessendorf"
+description: "Ocean simmulation on the ps5"
 image: /assets/img/projects/grass.png
 tags:
   - 🚀 Personal
@@ -8,8 +8,9 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 6
+order: 5
 ---
+
 Sample
 
 ## Features

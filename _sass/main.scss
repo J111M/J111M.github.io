@@ -2,3 +2,103 @@
 @forward 'components';
 @forward 'layout';
 @forward 'pages';
+
+.intro-card .card-title {
+  color: #fff;
+  overflow: hidden;
+  white-space: nowrap;
+  width: fit-content;
+  max-width: 0;
+  position: absolute;
+}
+
+.intro-card .card-body {
+  position: relative;
+  padding-top: 3rem;
+}
+
+.intro-card .title-container {
+  position: relative;
+  height: 2.5rem;
+  margin-bottom: 2rem;
+}
+
+.intro-card .card-title.line-1 {
+  border-right: 2px solid #fff;
+  animation: 
+    typing 1.5s steps(25) forwards, 
+    blink 0.7s step-end infinite,
+    hide-cursor 0s 1.5s forwards,
+    delete 1s steps(25) 2s forwards,
+    hide-line1 0s 3s forwards;
+}
+
+.intro-card .card-title.line-2 {
+  border-right: 2px solid transparent;
+  animation: 
+    show-cursor 0s 3.2s forwards,
+    typing 1.5s steps(25) 3.2s forwards,
+    blink 0.7s step-end 3.2s infinite,
+    hide-cursor 0s 4.7s forwards;
+}
+
+
+.intro-card {
+  border-radius: 1rem;
+  overflow: hidden;
+  border: none;
+  background: transparent;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.intro-overlay {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  width: 100%;
+  height: 100%;
+}
+
+.intro-card .card-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+@keyframes typing {
+  from { max-width: 0; }
+  to { max-width: 100%; }
+}
+
+@keyframes delete {
+  from { max-width: 100%; }
+  to { max-width: 0; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+
+@keyframes hide-cursor {
+  to { border-color: transparent; }
+}
+
+@keyframes show-cursor {
+  to { border-right-color: #fff; }
+}
+
+@keyframes hide-line1 {
+  to { visibility: hidden; }
+}
+
+.intro-list {
+  padding-left: 1.5rem;
+  margin: 0;
+  color: #fff;
+}
+
+.intro-list li {
+  margin-bottom: 0.5rem;
+}
+
+.intro-list li::marker {
+  color: #fff;
+}

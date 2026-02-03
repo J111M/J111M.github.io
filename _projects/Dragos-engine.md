@@ -1,6 +1,6 @@
 ---
-title: "sample"
-description: "sample"
+title: "Planet generator"
+description: "Vulkan project that generates simple planets"
 image: /assets/img/projects/grass.png
 tags:
   - 🚀 Personal
@@ -8,9 +8,8 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 2
+order: 6
 ---
-
 Sample
 
 ## Features
