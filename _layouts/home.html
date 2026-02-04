@@ -35,94 +35,30 @@ layout: default
 
 <h2>Projects</h2>
 
-<div class="portfolio-page">
-  <div class="projects-container">
-    {% assign all_projects = site.projects | sort: 'date' | reverse %}
-    
-    {% for project in all_projects %}
-    <a href="{{ project.url }}" class="project-card-link" 
-       data-priority-highlights="{{ project.priority_highlights | default: 999 }}"
-       data-categories="{{ project.tags | join: ' ' }}">
-      <article class="project-card">
-        
-        {% if project.image %}
-          <div class="project-image">
-            <img src="{{ project.image | relative_url }}" alt="{{ project.title }} Preview">
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+  {% assign sorted_projects = site.projects | sort: 'order' %}
+  {% for project in sorted_projects %}
+    <div class="col">
+      <article class="card h-100 project-card">
+        <a href="{{ project.url | relative_url }}" class="text-decoration-none">
+          {% if project.image %}
+            <img src="{{ project.image | relative_url }}" class="card-img-top" alt="{{ project.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text text-muted">{{ project.description }}</p>
           </div>
-        {% endif %}
-        
-        <div class="project-info">
-          <h3>{{ project.title }}</h3>
-          <p>{{ project.description }}</p>
-          
-          <div class="project-metadata">
-            
-            {% if project.main_category == "University Projects" %}
-              <div class="meta-tag university">
-                <span class="meta-icon">🎓</span>
-                <span class="meta-label">University</span>
-              </div>
-            {% elsif project.main_category == "Personal Projects" %}
-              <div class="meta-tag personal">
-                <span class="meta-icon">🚀</span>
-                <span class="meta-label">Personal</span>
-              </div>
-            {% elsif project.main_category == "Archive Projects" %}
-              <div class="meta-tag archive">
-                <span class="meta-icon">📦</span>
-                <span class="meta-label">Archived</span>
-              </div>
-            {% endif %}
-            
-            {% if project.engine %}
-              <div class="meta-tag engine">
-                <span class="meta-icon">🔧</span>
-                <span class="meta-label">{{ project.engine }}</span>
-              </div>
-            {% endif %}
-
-            {% if project.team_size %}
-              {% assign team_lower = project.team_size | downcase %}
-              {% if team_lower contains "solo" %}
-                <div class="meta-tag team solo">
-                  <span class="meta-icon">👤</span>
-                  <span class="meta-label">{{ project.team_size }}</span>
-                </div>
-              {% else %}
-                <div class="meta-tag team group">
-                  <span class="meta-icon">👥</span>
-                  <span class="meta-label">{{ project.team_size }}</span>
-                </div>
-              {% endif %}
-            {% endif %}
-
-            {% if project.platform %}
-              <div class="meta-tag platform">
-                <span class="meta-icon">💻</span>
-                <span class="meta-label">{{ project.platform }}</span>
-              </div>
-            {% endif %}
-
-            {% if project.duration %}
-              <div class="meta-tag duration">
-                <span class="meta-icon">⏱️</span>
-                <span class="meta-label">{{ project.duration }}</span>
-              </div>
-            {% endif %}
-            
-            {% if project.features %}
-              <div class="meta-tag features">
-                <span class="meta-icon">✨</span>
-                <span class="meta-label">{{ project.features }}</span>
-              </div>
-            {% endif %}
-
+          <div class="card-footer bg-transparent border-0">
+            <div class="d-flex flex-wrap gap-2">
+              {% for tag in project.tags %}
+                <span class="badge bg-secondary">{{ tag }}</span>
+              {% endfor %}
+            </div>
           </div>
-        </div>
+        </a>
       </article>
-    </a>
-    {% endfor %}
-  </div>
+    </div>
+  {% endfor %}
 </div>
 
 <!-- Articles Section -->
