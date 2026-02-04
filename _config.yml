@@ -194,8 +194,8 @@ defaults:
       layout: page
       permalink: /:title/
   - scope:
-    path: ""
-    type: projects
+      path: ""
+      type: projects
     values:
       layout: project
       permalink: /projects/:title/
