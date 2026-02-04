@@ -1,8 +1,7 @@
 ---
 ---
-@import 'main.bundle';
-@import 'pages/projects';
-
+@use 'main' as *;
+@use 'pages/projects' as *;
 
 /* append your custom style below */
 video {
@@ -10,8 +9,6 @@ video {
   max-width: 100%;
   height: auto;
 }
-
-
 
 @media (min-width: 1600px) {
   #main-wrapper .container {
@@ -64,4 +61,3 @@ video {
     max-width: 100%;
   }
 }
-
