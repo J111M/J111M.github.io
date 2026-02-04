@@ -51,6 +51,16 @@
     flex-direction: column;
     height: auto;
   }
+
+  video {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+  }
+  
+  .ratio {
+    border-radius: 0;
+  }
 }
 
 /* Dark mode adjustments */

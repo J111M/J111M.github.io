@@ -1,18 +1,23 @@
 ---
 layout: default
 ---
-
 {% include lang.html %}
-
 <h2>Projects</h2>
-
 <div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
   {% assign sorted_projects = site.projects | sort: 'order' %}
   {% for project in sorted_projects %}
     <div class="col">
       <article class="card h-100 project-card">
-        {% if project.image %}
-            <img src="{{ project.image | relative_url }}" class="card-img-top" alt="{{ project.title }}">
+        {% if project.video %}
+          <video class="card-img-top" autoplay muted loop playsinline>
+            <source src="{{ project.video | relative_url }}" type="video/mp4">
+          </video>
+        {% elsif project.youtube %}
+          <div class="ratio ratio-16x9 card-img-top">
+            <iframe src="https://www.youtube.com/embed/{{ project.youtube }}" allowfullscreen></iframe>
+          </div>
+        {% elsif project.image %}
+          <img src="{{ project.image | relative_url }}" class="card-img-top" alt="{{ project.title }}">
         {% endif %}
         <a href="{{ project.url | relative_url }}" class="text-decoration-none">
           <div class="card-body">
@@ -31,7 +36,6 @@ layout: default
     </div>
   {% endfor %}
 </div>
-
 {% if paginator.total_pages > 1 %}
   {% include post-paginator.html %}
 {% endif %}

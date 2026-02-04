@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<article class="project-detail">
+  <header class="mb-4">
+    <h1>{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="lead text-muted">{{ page.description }}</p>
+    {% endif %}
+    
+    {% if page.tags %}
+      <div class="d-flex flex-wrap gap-2 mt-3">
+        {% for tag in page.tags %}
+          <span class="badge bg-secondary">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </header>
+
+  {% if page.video %}
+    <video controls class="img-fluid rounded mb-4">
+      <source src="{{ page.video | relative_url }}" type="video/mp4">
+    </video>
+  {% elsif page.youtube %}
+    <div class="ratio ratio-16x9 mb-4">
+      <iframe src="https://www.youtube.com/embed/{{ page.youtube }}" allowfullscreen></iframe>
+    </div>
+  {% elsif page.image %}
+    <img src="{{ page.image | relative_url }}" class="img-fluid rounded mb-4" alt="{{ page.title }}">
+  {% endif %}
+
+  <div class="project-content">
+    {{ content }}
+  </div>
+
+  {% if page.github or page.demo %}
+    <div class="project-links mt-4">
+      {% if page.github %}
+        <a href="{{ page.github }}" class="btn btn-outline-dark me-2" target="_blank">
+          <i class="fab fa-github"></i> View Source
+        </a>
+      {% endif %}
+      {% if page.demo %}
+        <a href="{{ page.demo }}" class="btn btn-primary" target="_blank">
+          Live Demo
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</article>
