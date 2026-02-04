@@ -1,7 +1,7 @@
-@forward 'base';
-@forward 'components';
-@forward 'layout';
-@forward 'pages';
+@import 'base';
+@import 'components';
+@import 'layout';
+@import 'pages';
 @import 'project-cards';
 
 .intro-card .card-title {
