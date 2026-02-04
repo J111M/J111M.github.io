@@ -70,16 +70,13 @@
   .card-title {
     font-size: 1.1rem;
     margin-bottom: 8px;
-    color: #333;
+    color: #ffffff;
   }
 
   .card-text {
     font-size: 0.9rem;
   }
 }
-
-
-
 
 .card-footer {
   padding: 0 16px 16px;
@@ -91,9 +88,10 @@
   .badge {
     font-weight: 500;
     font-size: 0.75rem;
-    padding: 5px 10px;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
     background-color: #6c757d;
+    color: #ffffff;
 
     &.tag-cpp { background-color: #00599C; }
     &.tag-python { background-color: #3776AB; }
