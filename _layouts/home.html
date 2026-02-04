@@ -51,7 +51,7 @@ layout: default
           <div class="card-footer bg-transparent border-0">
             <div class="d-flex flex-wrap gap-2">
               {% for tag in project.tags %}
-                <span class="badge bg-secondary">{{ tag }}</span>
+                <span class="badge tag-{{ tag | downcase | replace: ' ', '-' | replace: '#', 'sharp' | replace: '+', 'p' }}">{{ tag }}</span>
               {% endfor %}
             </div>
           </div>

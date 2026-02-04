@@ -63,6 +63,69 @@
   }
 }
 
+.card-body {
+  padding: 16px;
+  flex: 1;
+
+  .card-title {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    color: #333;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+  }
+}
+
+.card-footer {
+  padding: 0 16px 16px;
+
+  .d-flex {
+    gap: 6px;
+  }
+
+  .badge {
+    font-weight: 500;
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    background-color: #6c757d;
+
+    &.tag-cpp { background-color: #00599C; }
+    &.tag-python { background-color: #3776AB; }
+    &.tag-javascript { background-color: #F7DF1E; color: #000; }
+    &.tag-rust { background-color: #DEA584; color: #000; }
+    &.tag-go { background-color: #00ADD8; }
+    &.tag-java { background-color: #ED8B00; }
+    &.tag-csharp { background-color: #68217A; }
+    &.tag-ruby { background-color: #CC342D; }
+    &.tag-php { background-color: #777BB4; }
+    &.tag-swift { background-color: #FA7343; }
+    &.tag-kotlin { background-color: #7F52FF; }
+    &.tag-typescript { background-color: #3178C6; }
+    &.tag-html { background-color: #E34F26; }
+    &.tag-css { background-color: #1572B6; }
+    &.tag-react { background-color: #61DAFB; color: #000; }
+    &.tag-vue { background-color: #4FC08D; }
+    &.tag-angular { background-color: #DD0031; }
+    &.tag-docker { background-color: #2496ED; }
+    &.tag-aws { background-color: #FF9900; color: #000; }
+    &.tag-linux { background-color: #FCC624; color: #000; }
+    &.tag-git { background-color: #F05032; }
+    &.tag-sql { background-color: #4479A1; }
+    &.tag-mongodb { background-color: #47A248; }
+    &.tag-ai { background-color: #FF6F61; }
+    &.tag-ml { background-color: #9B59B6; }
+    &.tag-gamedev { background-color: #E91E63; }
+    &.tag-opengl { background-color: #5586A4; }
+    &.tag-vulkan { background-color: #AC162C; }
+    &.tag-unreal { background-color: #0E1128; }
+    &.tag-unity { background-color: #222C37; }
+  }
+}
+
+
 /* Dark mode adjustments */
 html[data-mode='dark'] .project-card {
   --card-bg: #1e2028;
