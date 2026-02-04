@@ -1,7 +1,7 @@
-@import 'base';
-@import 'components';
-@import 'layout';
-@import 'pages';
+@forward 'base';
+@forward 'components';
+@forward 'layout';
+@forward 'pages';
 @import 'project-cards';
 
 .intro-card .card-title {
@@ -15,7 +15,7 @@
 
 .intro-card .card-body {
   position: relative;
-  padding-top: 3rem;
+  padding: 2.5rem 3rem !important;
 }
 
 .intro-card .title-container {
@@ -43,6 +43,21 @@
     hide-cursor 0s 4.7s forwards;
 }
 
+.intro-card .card-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.intro-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+
+  li {
+    margin-bottom: 0.5rem;
+  }
+}
 
 .intro-card {
   border-radius: 1rem;
@@ -52,6 +67,18 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+
+  .btn-outline-light {
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+.intro-card .d-flex {
+  gap: 0.75rem;
 }
 
 .intro-overlay {
