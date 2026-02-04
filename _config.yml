@@ -202,6 +202,8 @@ defaults:
 
 sass:
   style: compressed
+    silence_deprecations:
+    - import
 
 compress_html:
   clippings: all
