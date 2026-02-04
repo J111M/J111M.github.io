@@ -196,9 +196,9 @@ defaults:
   - scope:
     path: ""
     type: projects
-  values:
-    layout: project
-    permalink: /projects/:title/
+    values:
+      layout: project
+      permalink: /projects/:title/
 
 sass:
   style: compressed
