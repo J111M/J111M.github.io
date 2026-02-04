@@ -1,7 +1,15 @@
 ---
 ---
-@use 'main
+
+@import 'main
 {%- if jekyll.environment == 'production' -%}
   .bundle
 {%- endif -%}
 ';
+
+/* append your custom style below */
+video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
