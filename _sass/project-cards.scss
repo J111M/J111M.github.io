@@ -83,3 +83,15 @@ html[data-mode='light'] {
     --card-shadow: 0 2px 8px rgba(8 10 16 / 45%), 0 0 0 1px rgba(90 110 150 / 10%);
   }
 }
+
+.row-cols-1.row-cols-md-3 > .col {
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .row-cols-1.row-cols-md-3 > .col {
+    flex: 0 0 33.333%;
+    max-width: 33.333%;
+  }
+}
