@@ -1,7 +1,12 @@
 ---
 ---
-@use 'main' as *;
-@use 'pages/projects' as *;
+@import 'main
+{%- if jekyll.environment == 'production' -%}
+  .bundle
+{%- endif -%}
+';
+
+@import 'pages/projects';
 
 /* append your custom style below */
 video {
