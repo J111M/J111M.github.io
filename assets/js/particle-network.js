@@ -34,9 +34,9 @@
     breakDistance: 80,
     reconnectTime: 3000,
     // Colors - adjust to match your site's theme
-    particleColor: 'rgba(100, 180, 255, 0.8)',
-    lineColor: 'rgba(100, 180, 255, 0.3)',
-    glowColor: 'rgba(100, 180, 255, 0.5)'
+    particleColor: 'rgba(255, 255, 255, 0.8)',
+    lineColor: 'rgba(255, 255, 255, 0.3)',
+    glowColor: 'rgba(255, 255, 255, 0.5)'
   };
 
   class Particle {
