@@ -1,16 +1,16 @@
 ---
 title: "Custom engine | Nakon"
-description: "Round based survival shooter created for PC and PS5"
+description: "Nakon is a round-based survival FPS created with a custom engine for PC and PS5"
 image: /assets/img/projects/firefly.png
 tags:
-  - 🚀 Personal
-  - 🔧 DirectX 12
-  - 👤 Solo
-  - 💻 PC
-  - ⏱️ In Progress
+  - 🚀 University
+  - 🔧 C++ | Custom engine
+  - 👤 12 people
+  - 💻 PC/PS5
+  - ⏱️ 8 weeks
 order: 3
 ---
-Sample
+
 
 ## Features
 - PBR lighting

@@ -1,13 +1,13 @@
 ---
 title: "Firefly engine"
-description: "A real-time renderer build for PC and PS5"
+description: "We were tasked with creating an render engine that we could integrate into 2 sepperate engines one of them focused on fps games and the other on rogue likes."
 image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Engine
-  - 🔧 DirectX 12 | PS5
+  - 🔧 C++ Custom engine
   - 👤 Team
-  - 💻 PC
-  - ⏱️ In Progress
+  - 💻 Windows/PS5
+  - ⏱️ 8 weeks
 order: 1
 ---
 

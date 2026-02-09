@@ -1,14 +1,14 @@
 ---
 title: "Godot ray-tracing"
-description: "Modified Godot's source code and implemented hardware-accelerated Vulkan ray-tracing"
+description: "Modified Godot's source code and implemented hardware-accelerated ray-tracing with Vulkan"
 image: /assets/img/projects/firefly.png
 tags:
   - 🎮 Godot
-  - 🔧 Vulkan
+  - 🔧 C++ | Vulkan
   - ⚡ Hardware Ray Tracing
   - 👤 3 people
   - 💻 PC
-  - ⏱️ In Progress
+  - ⏱️ 8 weeks
 order: 2
 ---
 

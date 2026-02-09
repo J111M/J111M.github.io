@@ -1,13 +1,13 @@
 ---
 title: "CPU ray-tracer"
-description: "Ocean simmulation on the ps5"
+description: "Small CPU voxel ray-tracer"
 image: /assets/img/projects/firefly.png
 tags:
   - 🚀 Personal
-  - 🔧 DirectX 12
+  - 🔧 C++
   - 👤 Solo
   - 💻 PC
-  - ⏱️ In Progress
+  - ⏱️ 8 weeks
 order: 7
 ---
 
