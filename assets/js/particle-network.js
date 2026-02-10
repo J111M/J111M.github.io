@@ -49,16 +49,14 @@
 
   class Particle {
     constructor() {
-      this.reset();
-      const sw = getSidebarWidth();
-      this.x = sw + Math.random() * (width - sw);
-      this.y = Math.random() * height;
       this.brokenConnections = new Set();
+      this.reset();
     }
 
     reset() {
       const sw = getSidebarWidth();
-      this.x = sw + Math.random() * (width - sw);
+      const margin = 10;
+      this.x = sw + margin + Math.random() * (width - sw - margin * 2);
       this.y = Math.random() * height;
       this.vx = (Math.random() - 0.5) * config.particleSpeed;
       this.vy = (Math.random() - 0.5) * config.particleSpeed;
@@ -92,8 +90,19 @@
       this.y += this.vy;
 
       const sw = getSidebarWidth();
-      if (this.x < sw) this.x = width;
-      if (this.x > width) this.x = sw;
+      const buffer = 15;
+
+      // Bounce off sidebar edge instead of wrapping through
+      if (this.x < sw + buffer) {
+        this.x = sw + buffer;
+        this.vx = Math.abs(this.vx) + 0.2;
+      }
+      // Wrap at right edge
+      if (this.x > width + 10) {
+        this.x = sw + buffer + 20;
+      }
+
+      // Wrap vertically
       if (this.y < 0) this.y = height;
       if (this.y > height) this.y = 0;
     }
@@ -181,13 +190,24 @@
   }
 
   function animate() {
+    ctx.clearRect(0, 0, width, height);
+
     const sw = getSidebarWidth();
-    ctx.clearRect(sw, 0, width - sw, height);
+    const overlap = 0;
+
+    // Clip exactly at the sidebar edge
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(sw, 0, width - sw, height);
+    ctx.clip();
+
     drawConnections();
     particles.forEach(p => {
       p.update();
       p.draw();
     });
+
+    ctx.restore();
     animationId = requestAnimationFrame(animate);
   }
 
