@@ -2,6 +2,10 @@
 title: "Wild-engine"
 description: "This is my personal playground for researching and implementing new rendering features inspired by Zelda breath of the wild like procedural grass rendering."
 image: /assets/img/posts/grass/grass.gif
+features:
+  - title: GPU-Driven rendering
+    text: render
+    icon: fas fa-bolt
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12
