@@ -27,8 +27,10 @@ layout: default
       <iframe src="https://www.youtube.com/embed/{{ page.youtube }}" allowfullscreen></iframe>
     </div>
   {% elsif page.image %}
-    <img src="{{ page.image | relative_url }}" class="img-fluid rounded mb-4" alt="{{ page.title }}">
-  {% endif %}
+  <div class="w-100 mb-4">
+    <img src="{{ page.image | relative_url }}" class="img-fluid rounded" style="width: 100%; max-height: 500px; object-fit: cover;" alt="{{ page.title }}">
+  </div>
+{% endif %}
 
   <div class="project-content">
     {{ content }}
@@ -47,26 +49,37 @@ layout: default
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
   </style>
-    <section class="mt-4 mb-4">
-      <h2 class="mb-3" style="font-size: 1.4rem;">Key Features</h2>
-      <div class="row g-3">
-        {% for feature in page.features %}
-          <div class="col-md-4">
-            <div class="card h-100" style="background: var(--card-bg, #1b1b1e); border: 1px solid var(--card-border-color, #343a40); border-radius: .75rem;">
-              <div class="card-body">
-                <h5 class="card-title" style="color: var(--heading-color, #fff); font-size: 1.05rem;">
-                  {% if feature.icon %}<i class="{{ feature.icon }} me-1"></i>{% endif %}
-                  {{ feature.title }}
-                </h5>
-                <p class="card-text" style="color: var(--text-muted-color, #868e96); font-size: .9rem; margin-bottom: 0;">
-                  {{ feature.text }}
-                </p>
-              </div>
+  <section class="mt-4 mb-4">
+    <h2 class="mb-3" style="font-size: 1.4rem;">Features</h2>
+    <div class="row g-3">
+      {% for feature in page.features %}
+        <div class="col-md-6">
+          <div class="card h-100 feature-card">
+            <div class="card-body">
+              <h5 class="card-title">
+                {% if feature.icon %}<i class="{{ feature.icon }} me-1"></i>{% endif %}
+                {{ feature.title }}
+              </h5>
+              <p class="card-text">
+                {{ feature.text }}
+              </p>
             </div>
+            {% if feature.video %}
+              <div class="feature-media-container">
+                <video controls muted class="feature-media">
+                  <source src="{{ feature.video | relative_url }}" type="video/mp4">
+                </video>
+              </div>
+            {% elsif feature.image %}
+              <div class="feature-media-container">
+                <img src="{{ feature.image | relative_url }}" class="feature-media" alt="{{ feature.title }}">
+              </div>
+            {% endif %}
           </div>
-        {% endfor %}
-      </div>
-    </section>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
   {% endif %}
 
   {% if page.github or page.demo %}
