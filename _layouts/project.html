@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="project-detail">
+<article class="project-detail px-1" style="background-color: var(--card-bg, #fff); border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
   <header class="mb-4">
     <h1>{{ page.title }}</h1>
     {% if page.description %}
@@ -17,7 +17,6 @@ layout: default
       </div>
     {% endif %}
   </header>
-
   {% if page.video %}
     <video controls class="img-fluid rounded mb-4">
       <source src="{{ page.video | relative_url }}" type="video/mp4">
@@ -29,11 +28,9 @@ layout: default
   {% elsif page.image %}
     <img src="{{ page.image | relative_url }}" class="img-fluid rounded mb-4" alt="{{ page.title }}">
   {% endif %}
-
   <div class="project-content">
     {{ content }}
   </div>
-
   {% if page.github or page.demo %}
     <div class="project-links mt-4">
       {% if page.github %}

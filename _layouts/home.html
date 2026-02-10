@@ -35,9 +35,9 @@ layout: default
 
 <h2>Projects</h2>
 
-<div class="row row-cols-1 row-cols-md-3 g-4 mb-5">
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
   {% assign sorted_projects = site.projects | sort: 'order' %}
-  {% for project in sorted_projects %}
+  {% for project in sorted_projects limit: 6 %}
     <div class="col">
       <article class="card h-100 project-card">
         <a href="{{ project.url | relative_url }}" class="text-decoration-none">
@@ -60,6 +60,14 @@ layout: default
     </div>
   {% endfor %}
 </div>
+
+{% if sorted_projects.size > 6 %}
+  <div class="text-center mb-5">
+    <a href="{{ '/projects/' | relative_url }}" class="btn btn-outline-primary">
+      View All Projects <i class="fas fa-arrow-right ms-1"></i>
+    </a>
+  </div>
+{% endif %}
 
 <!-- Articles Section -->
 <h2>Articles</h2>
