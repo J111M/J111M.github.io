@@ -2,6 +2,10 @@
 title: "Custom engine | Nakon"
 description: "Nakon is a round-based survival FPS created with a custom engine for PC and PS5"
 image: /assets/img/projects/nakon/nakon.gif
+features:
+  - title: Gun system
+    text: Gun system
+    icon: fas fa-bolt
 tags:
   - 🚀 University
   - 🔧 C++ | Custom engine

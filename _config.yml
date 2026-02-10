@@ -16,7 +16,7 @@ timezone: Europe/Amsterdam
 
 title: Jim van der Heijden # the main title
 
-tagline: Graphics Programmer | DirectX 12 & Vulkan # it will display as the subtitle
+tagline: C++ Graphics Programmer
 
 description: >- # used by seo meta and the atom feed
   Portfolio of a graphics programmer specializing in DirectX 12 and Vulkan. Showcasing real-time rendering projects, engine work, and low-level GPU programming.
@@ -101,7 +101,7 @@ theme_mode: # [light | dark]
 cdn:
 
 # the avatar on sidebar, support local or CORS resources
-avatar: /assets/img/helmet.png
+avatar: /assets/img/picture.png
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

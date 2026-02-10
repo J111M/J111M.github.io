@@ -2,7 +2,7 @@
 layout: default
 ---
 
-<article class="project-detail px-1" style="background-color: var(--card-bg, #fff); border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+<article class="project-detail">
   <header class="mb-4">
     <h1>{{ page.title }}</h1>
     {% if page.description %}
@@ -17,6 +17,7 @@ layout: default
       </div>
     {% endif %}
   </header>
+
   {% if page.video %}
     <video controls class="img-fluid rounded mb-4">
       <source src="{{ page.video | relative_url }}" type="video/mp4">
@@ -28,9 +29,46 @@ layout: default
   {% elsif page.image %}
     <img src="{{ page.image | relative_url }}" class="img-fluid rounded mb-4" alt="{{ page.title }}">
   {% endif %}
+
   <div class="project-content">
     {{ content }}
   </div>
+
+{% if page.features %}
+  <style>
+    .feature-card {
+      background: var(--card-bg, #1b1b1e);
+      border: 1px solid var(--card-border-color, #343a40);
+      border-radius: .75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+    }
+  </style>
+    <section class="mt-4 mb-4">
+      <h2 class="mb-3" style="font-size: 1.4rem;">Key Features</h2>
+      <div class="row g-3">
+        {% for feature in page.features %}
+          <div class="col-md-4">
+            <div class="card h-100" style="background: var(--card-bg, #1b1b1e); border: 1px solid var(--card-border-color, #343a40); border-radius: .75rem;">
+              <div class="card-body">
+                <h5 class="card-title" style="color: var(--heading-color, #fff); font-size: 1.05rem;">
+                  {% if feature.icon %}<i class="{{ feature.icon }} me-1"></i>{% endif %}
+                  {{ feature.title }}
+                </h5>
+                <p class="card-text" style="color: var(--text-muted-color, #868e96); font-size: .9rem; margin-bottom: 0;">
+                  {{ feature.text }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
   {% if page.github or page.demo %}
     <div class="project-links mt-4">
       {% if page.github %}
