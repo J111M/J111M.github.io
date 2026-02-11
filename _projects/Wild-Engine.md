@@ -13,7 +13,7 @@ features:
     text: "Animated grass by offsetting the top Bézier control point with a scrolling Perlin noise, with configurable settings to modify wind direction, strength, frequency, and amplitude of the noise."
     icon: "fas fa-wind"
     image: "/assets/img/posts/grass/grassshowcase.gif"
-  - title: "GPU Driven Pipeline"
+  - title: "GPU Driven Rendering"
     text: "Generated draw commands on the GPU via compute shaders and executed them with DirectX 12's ExecuteIndirect to minimize CPU overhead."
     icon: "fas fa-microchip"
   - title: "Base For Frustum Culling & LOD System"
