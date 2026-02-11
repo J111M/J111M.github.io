@@ -4,7 +4,7 @@ description: "Nakon is a round-based survival FPS created with a custom engine f
 image: /assets/img/projects/nakon/nakon.gif
 features:
   - title: "PS5 Build Pipeline"
-    text: "Set up the full PlayStation 5 build and deployment pipeline, devkit deployment, and platform-specific bug fixing (animation crashes, hit crashes, shader alignment issues)."
+    text: "Set up the PlayStation 5 devkit deployment, and did platform-specific bug fixing (crashing of the animation pass, crashes when shooting too many bullets and shader alignment issues)."
     icon: "fas fa-gamepad"
   - title: "Depth Fog System"
     text: "Implemented a depth fog post-process with configurable density, color, start/end falloff ranges, and optional skybox support. The settings are exposed so that the artists can tweak the feature."
@@ -16,16 +16,15 @@ features:
     icon: "fas fa-fire"
   - title: "Ritual Soul System"
     text: "Built a soul accumulation system where enemy kills spawn color-matched particles that interpolate towards the ritual altar, giving clear visual feedback for the objective."
+    image: /assets/img/projects/nakon/altar.gif
     icon: "fas fa-ghost"
-  - title: "Render Graph Pass Ordering"
-    text: "Fixed the render graph sorting so post-process effects no longer rendered over UI. Converted the top layer pass to the forward renderer for correct shading."
     icon: "fas fa-layer-group"
   - title: "Health & Vignette System"
-    text: "Created a health system with timed regeneration and a dynamic vignette post-process that intensifies as health drops, with configurable intensity, color, and recovery speed."
+    text: "Created a health system with timed regeneration and a dynamic vignette post-process effect that intensifies as health drops, with configurable intensity, color, and recovery speed."
     icon: "fas fa-heart"
     image: /assets/img/projects/nakon/vignette.gif
   - title: "Bullet Damage Falloff"
-    text: "Implemented distance-based damage falloff with pierce damage reduction, all values exposed via ImGui for designer tuning during playtests."
+    text: "Implemented distance based damage falloff with pierce damage reduction, all values are exposed via ImGui so they can easily be tweaked."
     icon: "fas fa-crosshairs"
   - title: "Foliage Rendering"
     text: "Added foliage support to the forward renderer in collaboration with an artist, including shadow pass integration."
@@ -36,11 +35,8 @@ features:
     image: "/assets/img/projects/nakon/particlecolor.gif"
     icon: "fas fa-random"
   - title: "PS5 Performance Profiling"
-    text: "Profiled the PS5 build identifying the forward pass (3991μs) and shadow pass (2933μs) as bottlenecks, identifying that we need to minimize the amount of draw calls being issued through culling techniques"
+    text: "Profiled the PS5 build identifying the forward pass and shadow pass as bottlenecks, identifying that we need to minimize the amount of draw calls being issued through culling techniques"
     icon: "fas fa-chart-line"
-  - title: "Release Build Cleanup"
-    text: "Stripped all debug functionality from release builds using an EDITOR_CONFIG preprocessor definition to keep debug tools in editor only."
-    icon: "fas fa-broom"
 tags:
   - 🚀 University
   - 🔧 C++ | Custom engine

@@ -14,10 +14,3 @@ tags:
   - ⏱️ 8 weeks
 order: 4
 ---
-
-Sample
-
-## Features
-- PBR lighting
-- Deferred rendering
-- etc.

@@ -10,9 +10,3 @@ tags:
   - ⏱️ In Progress
 order: 6
 ---
-Sample
-
-## Features
-- PBR lighting
-- Deferred rendering
-- etc.
