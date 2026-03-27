@@ -1,7 +1,7 @@
 ---
 title: "Godot hybrid ray-tracing"
-description: "Modified Godot's source code and implemented hardware-accelerated ray-tracing with Vulkan"
-image: /assets/img/projects/godot/raytraced.gif
+description: "Modified Godot's Vulkan back-end and implemented hardware-accelerated ray-tracing"
+image: /assets/img/projects/godot/nogi.png
 features:
   - title: "Hybrid Ray-Traced Reflections"
     text: "Implemented hybrid ray-traced reflections in Godot's forward+ renderer by skipping the main ray using rasterized G-buffer data and tracing secondary rays from reconstructed world positions."

@@ -1,6 +1,6 @@
 ---
 title: "Wild-engine"
-description: "This is my personal playground for researching and implementing new rendering features inspired by Zelda breath of the wild like procedural grass rendering."
+description: "This is my personal playground for researching and implementing new rendering features inspired by games like Zelda breath of the wild and Sea of Thieves."
 image: /assets/img/posts/grass/grass.gif
 features:
   - title: "Procedural Grass Blade Generation"
@@ -24,5 +24,5 @@ tags:
   - 👤 Solo
   - 💻 PC
   - ⏱️ In Progress
-order: 3
+order: 1
 ---
