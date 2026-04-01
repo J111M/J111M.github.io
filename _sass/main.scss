@@ -2,7 +2,7 @@
 @forward 'components';
 @forward 'layout';
 @forward 'pages';
-@import 'project-cards';
+@use 'project-cards';
 
 .intro-card .card-title {
   color: #fff;
