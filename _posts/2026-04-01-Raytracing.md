@@ -2,8 +2,8 @@
 layout: post
 title: Modifying Godot's Vulkan back-end to support hardware accelerated raytracing
 date: 2026-04-01 19:00:00
-categories: [Graphics, Raytrace]
-tags: raytrace
+categories: [Graphics, Raytracing]
+tags: [raytracing, godot]
 image:
   path: /assets/img/posts/godotraytrace/scene.gif
   alt: Raytracing in Godot
@@ -290,7 +290,6 @@ Here are the resource I used that helped shape this project:
 - [Cosine weighted sampling](https://pema.dev/obsidian/math/light-transport/cosine-weighted-sampling.html)
 - [Scratch a pixel](https://www.scratchapixel.com/lessons/3d-basic-rendering/ray-tracing-overview/light-transport-ray-tracing-whitted.html)
 - [Rendering perfect reflections Nvidia](https://developer.nvidia.com/blog/rendering-perfect-reflections-and-refractions-in-path-traced-games/)
-- [Gergely Vass](http://www.vassg.hu/diffuseraytracing/)
 
 This blog post was created by Jim van der Heijden, in Godot engine as a group project later continued as a self study project during my third year as a student of the Creative Media and Game Technologies course at Breda University of Applied Sciences.
 
