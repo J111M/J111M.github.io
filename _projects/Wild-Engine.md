@@ -1,23 +1,24 @@
 ---
 title: "Wild-engine"
-description: "This is my personal playground for researching and implementing new rendering features inspired by games like Zelda breath of the wild and Sea of Thieves."
-image: /assets/img/posts/grass/grass.gif
+description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>volumetric fog</strong>, <strong>procedural island generation</strong>, <strong>ocean rendering</strong>, and <strong>procedural grass</strong>."
+image: /assets/img/posts/ocean/ship.gif
 features:
-  - title: "Procedural Grass Blade Generation"
-    text: "Created grass blades from predefined vertex positions, deformed per-instance using hash-generated random values for position, rotation, and height."
+  - title: "Cascaded shadow maps" 
+    text: "Directional <strong>shadow maps</strong> rendered across multiple <strong>cascades</strong>, each capturing the appropriate level of detail for its distance range. Sampled using <strong>PCF filtering</strong> for extra sharp edges."
+    icon: "fas fa-sun"
+    video: "/assets/img/projects/wild/csm.mp4"
+  - title: "Volumetric fog"
+    text: "<strong>Ray marched</strong> volumetric fog with <strong>god rays</strong> sampled from <strong>cascaded shadow maps</strong>. I'm currently working on <strong>froxel-based volumetric fog</strong> to improve performance."
+    icon: "fas fa-smog"
+    video: "/assets/img/projects/wild/volumetrics.mp4"
+  - title: "Procedural terrain system"
+    text: "Island generation with <strong>layered noise</strong>, colored based on <strong>slope steepness</strong> combined with <strong>height-based coloring</strong>. The textures are sampled using <strong>tri-planar methods</strong> to ensure they are not stretched out. To achieve the island look I reduce the noise on the edge of the <strong>height map</strong>."
+    icon: "fas fa-mountain"
+    video: "/assets/img/projects/wild/terrain.mp4"
+  - title: "Modified my procedural grass system to integrate with the height map of the island"
+    text: "The grass system's blades are offset by the <strong>height map</strong> and are only drawn on the <strong>grass texture</strong>."
     icon: "fas fa-seedling"
-    image: /assets/img/posts/grass/blade.png
-  - title: "Using Bézier Curve To Displace Blades" 
-    text: "Displacing the vertices of the grass blades in the vertex shader using the Bézier curve to get a natural looking bend, In the same shader we also calculate the derivative to get the normals."
-  - title: "Perlin Noise Wind System"
-    text: "Animated grass by offsetting the top Bézier control point with a scrolling Perlin noise, with configurable settings to modify wind direction, strength, frequency, and amplitude of the noise."
-    icon: "fas fa-wind"
-    image: "/assets/img/posts/grass/grassshowcase.gif"
-  - title: "GPU Driven Rendering"
-    text: "Generated draw commands on the GPU via compute shaders and executed them with DirectX 12's ExecuteIndirect to minimize CPU overhead."
-    icon: "fas fa-microchip"
-  - title: "Base For Frustum Culling & LOD System"
-    text: "Still work in progress."
+    video: "/assets/img/projects/wild/grassterrain.mp4"
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12
@@ -26,3 +27,14 @@ tags:
   - ⏱️ In Progress
 order: 1
 ---
+
+This is my custom **DirectX 12** rendering engine built from scratch in **C++**, designed as a personal playground for implementing real-time rendering techniques inspired by games like The Legend of Zelda: Breath of the Wild and Sea of Thieves. The engine fully **abstracts** the **DirectX 12 API**, from **device** and **swapchain** management to **command lists**, **root signatures**, **pipeline state objects**, and **descriptor heaps**, providing a clean interface for building render passes without touching raw D3D12 calls. Built over six months as a solo project, whenever I see a cool feature in a game I play, I wan't to know how it is created.
+
+The project uses **G-Buffer** style rendering with **PBR** shading and **image-based lighting**. All textures are accessed via **bindless** techniques. Shaders are written in **HLSL**, compiled with **Slang**, and the project is built with **CMake**.
+
+
+#### Tools
+
+- **PIX** and **RenderDoc** integration for **GPU debugging** with **command list event markers**
+- Built-in **profiler** for all **render passes** and **debug line rendering**
+- **ImGui** integration for engine layout, allowing **real-time modifications**
