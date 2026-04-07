@@ -10,7 +10,7 @@ features:
  - title: "Using Bézier Curve To Displace Blades"
    text: "Displacing the vertices of the grass blades in the <strong>vertex shader</strong> using the <strong>Bézier curve</strong> to get a natural looking bend. In the same shader we also calculate the <strong>derivative</strong> to get the normals."
    icon: "fas fa-bezier-curve"
-   image: "/assets/img/posts/grass/bezier.png"
+   image: "/assets/img/posts/grass/grass.png"
  - title: "Perlin Noise Wind System"
    text: "Animated grass by offsetting the top <strong>Bézier control point</strong> with a scrolling <strong>Perlin noise</strong>, with configurable settings to modify <strong>wind direction</strong>, <strong>strength</strong>, <strong>frequency</strong>, and <strong>amplitude</strong> of the noise."
    icon: "fas fa-wind"
