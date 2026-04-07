@@ -1,5 +1,5 @@
 ---
-title: "Wild-engine"
+title: "Wild engine"
 description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>volumetric fog</strong>, <strong>procedural island generation</strong>, <strong>ocean rendering</strong>, and <strong>procedural grass</strong>."
 image: /assets/img/posts/ocean/ship.gif
 features:
