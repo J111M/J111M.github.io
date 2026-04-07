@@ -32,6 +32,7 @@ This is my custom **DirectX 12** rendering engine built from scratch in **C++**,
 
 The project uses **G-Buffer** style rendering with **PBR** shading and **image-based lighting**. All textures are accessed via **bindless** techniques. Shaders are written in **HLSL**, compiled with **Slang**, and the project is built with **CMake**.
 
+## Link to the github page: [Wild engine](https://github.com/J111M/Wild-Engine)
 
 #### Tools
 
