@@ -13,6 +13,7 @@ features:
   - title: "Setting Up Ray Tracing Shaders"
     text: "Built the <strong>raygen</strong>, <strong>closest-hit</strong>, and <strong>miss shaders</strong> in <strong>GLSL 460</strong> with <strong>iterative reflection loops</strong>."
     icon: "fas fa-code"
+    image: "/assets/img/posts/godotraytrace/scene.gif"
   - title: "G-Buffer Data Reconstruction"
     text: "Reconstructed <strong>world positions</strong> from the <strong>depth buffer</strong> and decoded <strong>view-space normals</strong> to <strong>world-space</strong> to use as <strong>ray origins</strong> and <strong>directions</strong>, this means we can skip the <strong>primary ray bounce</strong>."
     icon: "fas fa-cube"

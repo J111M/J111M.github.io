@@ -28,7 +28,9 @@ layout: default
     </div>
   {% elsif page.image %}
   <div class="w-100 mb-4">
-    <img src="{{ page.image | relative_url }}" class="img-fluid rounded" style="width: 100%; max-height: 500px; object-fit: cover;" alt="{{ page.title }}">
+    <a href="{{ page.image | relative_url }}" class="popup img-link">
+      <img src="{{ page.image | relative_url }}" class="img-fluid rounded" style="width: 100%; max-height: 500px; object-fit: cover;" alt="{{ page.title }}">
+    </a>
   </div>
 {% endif %}
 
@@ -72,7 +74,9 @@ layout: default
               </div>
             {% elsif feature.image %}
               <div class="feature-media-container">
-                <img src="{{ feature.image | relative_url }}" class="feature-media" alt="{{ feature.title }}">
+                <a href="{{ feature.image | relative_url }}" class="popup img-link">
+                  <img src="{{ feature.image | relative_url }}" class="feature-media" alt="{{ feature.title }}">
+                </a>
               </div>
             {% endif %}
           </div>
