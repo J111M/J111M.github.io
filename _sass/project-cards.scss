@@ -46,10 +46,14 @@
     margin-top: auto;
   }
 
-  a {
+  > a,
+  .project-card__link {
     display: flex;
     flex-direction: column;
-    height: auto;
+    min-height: 100%;
+    height: 100%;
+    color: inherit;
+    text-decoration: none;
   }
 
   video {

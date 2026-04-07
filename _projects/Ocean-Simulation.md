@@ -1,6 +1,6 @@
 ---
 title: "FFT based Ocean simmulation"
-description: "8 week research project implementing a <strong>Tessendorf-based FFT ocean simulation</strong> on the <strong>PlayStation 5</strong>."
+description: "8 week research project implementing a <strong>Tessendorf-based FFT ocean simulation</strong> running on the <strong>PlayStation 5</strong>. Created with the PS5 rendering API."
 image: /assets/img/posts/ocean/ocean.gif
 tags:
   - 🚀 University

@@ -127,12 +127,17 @@
 
     {% assign _final_src = null %}
     {% assign _lazyload = true %}
+    {% assign _skip_popup = false %}
 
     {%- capture _img_url -%}
       {% include media-url.html src=_src subpath=page.media_subpath %}
     {%- endcapture -%}
 
     {% assign _path_prefix = _img_url | remove: _src %}
+
+    {% if _class contains 'no-popup' %}
+      {% assign _skip_popup = true %}
+    {% endif %}
 
     {% unless _src contains '//' %}
       {% assign _final_src = _path_prefix | append: _src %}
@@ -162,11 +167,18 @@
     {% endif %}
 
     {% if page.layout == 'home' %}
-      <!-- create the image wrapper -->
-      {% assign _wrapper_start = '<div class="preview-img ' | append: _wrapper_class | append: '">' %}
+      {% if _skip_popup %}
+        <!-- preserve explicit no-popup images as-is -->
+      {% else %}
+        <!-- create the image wrapper -->
+        {% assign _wrapper_start = '<div class="preview-img ' | append: _wrapper_class | append: '">' %}
 
-      {% assign _img_content = _img_content | append: _wrapper_start %}
-      {% assign _right = _right | prepend: '></div' %}
+        {% assign _img_content = _img_content | append: _wrapper_start %}
+        {% assign _right = _right | prepend: '></div' %}
+      {% endif %}
+
+    {% elsif _skip_popup %}
+      <!-- preserve explicit no-popup images as-is -->
 
     {% else %}
       <!-- make sure the `<img>` is wrapped by `<a>` -->
