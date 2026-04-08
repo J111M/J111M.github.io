@@ -15,5 +15,7 @@ The gif above is a **ported version** to my **DirectX 12 engine** with improveme
 
 I wrote an article on the **implementation details** below. It doesn't go into the code but rather how the **waves are created** using the **Fast Fourier Transform**.
 
+<img src="/assets/img/posts/ocean/ocean.gif" alt="Image" width="500"/>
+
 {% assign linked_post = site.posts | where: 'slug', 'Ocean' | first %}
 {% include post-card.html post=linked_post %}
