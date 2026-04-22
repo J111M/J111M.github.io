@@ -16,10 +16,10 @@ timezone: Europe/Amsterdam
 
 title: Jim van der Heijden # the main title
 
-tagline: C++ Graphics Programmer
+tagline: C++ Game Programmer
 
 description: >- # used by seo meta and the atom feed
-  Portfolio of a graphics programmer specializing in DirectX 12 and Vulkan. Showcasing real-time rendering projects, engine work, and low-level GPU programming.
+  Portfolio of a C++ game programmer specializing in DirectX 12 and Vulkan. Showcasing real-time rendering projects, engine work, gameplay features, and low-level GPU programming.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
