@@ -1,0 +1,323 @@
+---
+layout: default
+---
+
+{% include lang.html %}
+
+<!-- Intro Section -->
+<div class="card mb-5 intro-card" style="background-image: url('{{ '/assets/img/projects/grass.png' | relative_url }}');">
+  <div class="intro-overlay">
+    <div class="card-body p-4 p-md-5">
+      <div class="title-container">
+        <h2 class="card-title line-1">Currently researching new rendering techniques</h2>
+        <h2 class="card-title line-2">Welcome, I'm Jim</h2>
+      </div>
+      <p class="card-text">
+        I'm a <strong>C++ game programmer</strong> specialized in <strong>graphics programming</strong>, from the <strong>Netherlands</strong> with experience in <strong>DirectX 12</strong> and <strong>PlayStation 5</strong> development.
+        <br>
+        <ul class="intro-list">
+        <li>🎓 Currently in my <strong>3rd year</strong> studying <strong>Game Technologies</strong> at <strong>Breda University of Applied Sciences</strong>.</li>
+        <li>🔍 Looking for an <strong>internship</strong> starting <strong>september 2026</strong>.</li>
+      </ul>
+      </p>
+      <div class="d-flex gap-3">
+        <a href="https://github.com/J111M" class="btn btn-outline-light btn-sm">
+          <i class="fab fa-github"></i> GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/jim-van-der-heijden-a32114214/" class="btn btn-outline-light btn-sm">
+          <i class="fab fa-linkedin"></i> LinkedIn
+        </a>
+        <a href="mailto:jim@combicleaning.nl" class="btn btn-outline-light btn-sm">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h2>Projects</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+  {% assign sorted_projects = site.projects | sort: 'order' %}
+  {% for project in sorted_projects limit: 6 %}
+    <div class="col">
+      <article class="card h-100 project-card">
+        <a href="{{ project.url | relative_url }}" class="text-decoration-none">
+          {% if project.image %}
+            <img src="{{ project.image | relative_url }}" class="card-img-top no-popup" alt="{{ project.title }}">
+          {% endif %}
+          <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text text-muted">{{ project.description }}</p>
+          </div>
+          <div class="card-footer bg-transparent border-0">
+            <div class="d-flex flex-wrap gap-2">
+              {% for tag in project.tags %}
+                <span class="badge tag-{{ tag | downcase | replace: ' ', '-' | replace: '#', 'sharp' | replace: '+', 'p' }}">{{ tag }}</span>
+              {% endfor %}
+            </div>
+          </div>
+        </a>
+      </article>
+    </div>
+  {% endfor %}
+</div>
+
+{% if sorted_projects.size > 6 %}
+  <div class="text-center mb-5">
+    <a href="{{ '/projects/' | relative_url }}" class="btn btn-outline-primary">
+      View All Projects <i class="fas fa-arrow-right ms-1"></i>
+    </a>
+  </div>
+{% endif %}
+
+{% include lang.html %}
+
+<!-- Articles Section -->
+<h2>Articles</h2>
+
+{% assign all_pinned = site.posts | where: 'pin', 'true' %}
+{% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
+
+{% assign posts = '' | split: '' %}
+
+{% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page %}
+{% assign visible_end = visible_start | plus: paginator.per_page %}
+
+{% if all_pinned.size > visible_start %}
+  {% if all_pinned.size > visible_end %}
+    {% assign pinned_size = paginator.per_page %}
+  {% else %}
+    {% assign pinned_size = all_pinned.size | minus: visible_start %}
+  {% endif %}
+
+  {% for i in (visible_start..all_pinned.size) limit: pinned_size %}
+    {% assign posts = posts | push: all_pinned[i] %}
+  {% endfor %}
+{% else %}
+  {% assign pinned_size = 0 %}
+{% endif %}
+
+{% assign normal_size = paginator.posts | size | minus: pinned_size %}
+
+{% if normal_size > 0 %}
+  {% if pinned_size > 0 %}
+    {% assign normal_start = 0 %}
+  {% else %}
+    {% assign normal_start = visible_start | minus: all_pinned.size %}
+  {% endif %}
+
+  {% assign normal_end = normal_start | plus: normal_size | minus: 1 %}
+
+  {% for i in (normal_start..normal_end) %}
+    {% assign posts = posts | push: all_normal[i] %}
+  {% endfor %}
+{% endif %}
+
+<div id="post-list" class="flex-grow-1 px-xl-1">
+  {% for post in posts %}
+    <article class="card-wrapper card">
+      <a href="{{ post.url | relative_url }}" class="post-preview row g-0 flex-md-row-reverse">
+        {% assign card_body_col = '12' %}
+
+        {% if post.image %}
+          {% assign src = post.image.path | default: post.image %}
+
+          {% if post.media_subpath %}
+            {% unless src contains '://' %}
+              {% assign src = post.media_subpath
+                | append: '/'
+                | append: src
+                | replace: '///', '/'
+                | replace: '//', '/'
+              %}
+            {% endunless %}
+          {% endif %}
+
+          {% if post.image.lqip %}
+            {% assign lqip = post.image.lqip %}
+
+            {% if post.media_subpath %}
+              {% unless lqip contains 'data:' %}
+                {% assign lqip = post.media_subpath
+                  | append: '/'
+                  | append: lqip
+                  | replace: '///', '/'
+                  | replace: '//', '/'
+                %}
+              {% endunless %}
+            {% endif %}
+
+            {% assign lqip_attr = 'lqip="' | append: lqip | append: '"' %}
+          {% endif %}
+
+          {% assign alt = post.image.alt | xml_escape | default: 'Preview Image' %}
+
+          <div class="col-md-5">
+            <img src="{{ src }}" alt="{{ alt }}" class="no-popup" {{ lqip_attr }}>
+          </div>
+
+          {% assign card_body_col = '7' %}
+        {% endif %}
+
+        <div class="col-md-{{ card_body_col }}">
+          <div class="card-body d-flex flex-column">
+            <h1 class="card-title my-2 mt-md-0">{{ post.title }}</h1>
+
+            <div class="card-text content mt-0 mb-3">
+              <p>{% include post-summary.html %}</p>
+            </div>
+
+            <div class="post-meta flex-grow-1 d-flex align-items-end">
+              <div class="me-auto">
+                <i class="far fa-calendar fa-fw me-1"></i>
+                {% include datetime.html date=post.date lang=lang %}
+
+                {% if post.categories.size > 0 %}
+                  <i class="far fa-folder-open fa-fw me-1"></i>
+                  <span class="categories">
+                    {% for category in post.categories %}
+                      {{ category }}
+                      {%- unless forloop.last -%},{%- endunless -%}
+                    {% endfor %}
+                  </span>
+                {% endif %}
+              </div>
+
+              {% if post.pin %}
+                <div class="pin ms-1">
+                  <i class="fas fa-thumbtack fa-fw"></i>
+                  <span>{{ site.data.locales[lang].post.pin_prompt }}</span>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+
+
+<!-- Skills Section -->
+<h2>Skills</h2>
+
+<div class="skills-section mb-5" style="background-color: var(--card-bg, #fff); border-radius: 1rem; padding: 2rem; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);">
+  <div class="skill-category mb-4">
+    <h5 class="text-muted mb-3"><strong>Languages</strong></h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg" class="skill-icon" alt="C++">
+        </div>
+        <div class="skill-label"><strong>C++</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg" class="skill-icon" alt="C#">
+        </div>
+        <div class="skill-label"><strong>C#</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category mb-4">
+    <h5 class="text-muted mb-3"><strong>Graphics APIs</strong></h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="{{ '/assets/img/skills/microsoft-directx.svg' | relative_url }}" class="skill-icon" alt="DirectX 12">
+        </div>
+        <div class="skill-label"><strong>DirectX 12</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vulkan/vulkan-original.svg" class="skill-icon" alt="Vulkan">
+        </div>
+        <div class="skill-label"><strong>Vulkan</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.simpleicons.org/playstation5/%23003791" class="skill-icon" alt="PS5">
+        </div>
+        <div class="skill-label"><strong>PS5</strong></div>
+      </div>
+    </div>
+  </div>
+
+ <div class="skill-category mb-4">
+    <h5 class="text-muted mb-3"><strong>Engines</strong></h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unrealengine/unrealengine-original.svg" class="skill-icon" alt="Unreal Engine">
+        </div>
+        <div class="skill-label"><strong>Unreal</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/unity/unity-original.svg" class="skill-icon" alt="Unity">
+        </div>
+        <div class="skill-label"><strong>Unity</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg" class="skill-icon" alt="Godot">
+        </div>
+        <div class="skill-label"><strong>Godot</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="skill-category mb-4">
+    <h5 class="text-muted mb-3"><strong>Tools</strong></h5>
+    <div class="d-flex flex-wrap gap-3">
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.simpleicons.org/nvidia/%2376B900" class="skill-icon" alt="Nsight">
+        </div>
+        <div class="skill-label"><strong>Nsight</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="{{ '/assets/img/skills/rdlogo.svg' | relative_url }}" class="skill-icon" alt="RenderDoc">
+        </div>
+        <div class="skill-label"><strong>RenderDoc</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg" class="skill-icon" alt="Git">
+        </div>
+        <div class="skill-label"><strong>Git</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.simpleicons.org/perforce/%23404040" class="skill-icon" alt="Perforce">
+        </div>
+        <div class="skill-label"><strong>Perforce</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/visualstudio/visualstudio-plain.svg" class="skill-icon" alt="Visual Studio">
+        </div>
+        <div class="skill-label"><strong>Visual Studio</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://img.icons8.com/color/96/jira.png" class="skill-icon" alt="Jira">
+        </div>
+        <div class="skill-label"><strong>Jira</strong></div>
+      </div>
+      <div class="skill-wrapper text-center">
+        <div class="skill-item">
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/confluence/confluence-original.svg" class="skill-icon" alt="Confluence">
+        </div>
+        <div class="skill-label"><strong>Confluence</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if paginator.total_pages > 1 %}
+  {% include post-paginator.html %}
+{% endif %}

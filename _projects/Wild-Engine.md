@@ -26,6 +26,7 @@ tags:
   - 💻 PC
   - ⏱️ In Progress
 order: 1
+gameplay: true
 ---
 
 This is my custom **DirectX 12** rendering engine built from scratch in **C++**, designed as a personal playground for implementing real-time rendering techniques inspired by games like The Legend of Zelda: Breath of the Wild and Sea of Thieves. The engine fully **abstracts** the **DirectX 12 API**, from **device** and **swapchain** management to **command lists**, **root signatures**, **pipeline state objects**, and **descriptor heaps**, providing a clean interface for building render passes without touching raw D3D12 calls. Built over six months as a solo project, whenever I see a cool feature in a game I play, I wan't to know how it is created.

@@ -1,6 +1,6 @@
 ---
 title: "Custom engine | Nakon"
-description: "Custom <strong>PlayStation 5</strong> and <strong>DirectX 12</strong> engine where I worked on <strong>abstracting</strong> the <strong>PS5 rendering pipeline</strong> and <strong>implementing</strong> various <strong>rendering features</strong>, engine features and gameplay."
+description: "Custom <strong>PlayStation 5</strong> and <strong>DirectX 12</strong> engine where I worked on <strong>abstracting</strong> the <strong>PS5 rendering pipeline</strong> and <strong>implementing</strong> various <strong>rendering</strong>, engine and <strong>gameplay features</strong>."
 image: /assets/img/projects/nakon/nakon.gif
 features:
   - title: "Storing G-buffer Data On PS5"
@@ -61,6 +61,7 @@ tags:
   - 🔧 C++ | Custom engine
   - 👤 12 people
 order: 3
+gameplay: true
 ---
 
 
