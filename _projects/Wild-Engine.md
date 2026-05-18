@@ -14,7 +14,7 @@ features:
   - title: "Procedural terrain system"
     text: "Island generation with <strong>layered noise</strong>, colored based on <strong>slope steepness</strong> combined with <strong>height-based coloring</strong>. The textures are sampled using <strong>tri-planar methods</strong> to ensure they are not stretched out. To achieve the island look I reduce the noise on the edge of the <strong>height map</strong>."
     icon: "fas fa-mountain"
-    video: "/assets/img/projects/wild/terrain.mp4"
+    video: "/assets/img/projects/wild/islandgeneration.mp4"
   - title: "Modified my procedural grass system to integrate with the height map of the island"
     text: "The grass system's blades are offset by the <strong>height map</strong> and are only drawn on the <strong>grass texture</strong>."
     icon: "fas fa-seedling"
@@ -40,3 +40,8 @@ The project uses **G-Buffer** style rendering with **PBR** shading and **image-b
 - **PIX** and **RenderDoc** integration for **GPU debugging** with **command list event markers**
 - Built-in **profiler** for all **render passes** and **debug line rendering**
 - **ImGui** integration for engine layout, allowing **real-time modifications**
+
+<video controls width="600">
+  <source src="/assets/img/projects/wild/bistro.mp4" type="video/mp4">
+</video>
+
