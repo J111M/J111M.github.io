@@ -2,8 +2,27 @@
 layout: default
 ---
 
+<style>
+  /* Opaque box so the animated background doesn't show through text */
+  .project-box,
+  .feature-card {
+    background: var(--card-bg, #1b1b1e);
+    border: 1px solid var(--card-border-color, #343a40);
+    border-radius: .75rem;
+  }
+  .project-box {
+    padding: 1.25rem 1.5rem;
+  }
+  .project-box > :first-child {
+    margin-top: 0;
+  }
+  .project-box > :last-child {
+    margin-bottom: 0;
+  }
+</style>
+
 <article class="project-detail">
-  <header class="mb-4">
+  <header class="project-box mb-4">
     <h1>{{ page.title }}</h1>
     {% if page.description %}
       <p class="lead text-muted">{{ page.description }}</p>
@@ -34,16 +53,13 @@ layout: default
   </div>
 {% endif %}
 
-  <div class="project-content">
+  <div class="project-content project-box">
     {{ content }}
   </div>
 
 {% if page.features %}
   <style>
     .feature-card {
-      background: var(--card-bg, #1b1b1e);
-      border: 1px solid var(--card-border-color, #343a40);
-      border-radius: .75rem;
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
     .feature-card:hover {
