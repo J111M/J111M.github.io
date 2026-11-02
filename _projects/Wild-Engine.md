@@ -3,6 +3,10 @@ title: "Wild engine"
 description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>volumetric fog</strong>, <strong>procedural island generation</strong>, <strong>ocean rendering</strong>, and <strong>procedural grass</strong>."
 image: /assets/img/posts/ocean/ship.gif
 features:
+  - title: "Two-Pass Meshlet HZB Occlusion Culling"
+    text: "GPU-driven <strong>two-pass occlusion culling</strong> per meshlet, combining <strong>frustum</strong>, <strong>normal-cone backface</strong> and <strong>Hi-Z occlusion</strong> tests in a single <strong>amplification-shader</strong> pass to skip hidden geometry before mesh shading."
+    icon: "fas fa-eye-slash"
+    video: "/assets/img/projects/wild/hzboc.mp4"
   - title: "Dynamic Diffuse Global Illumination"
     text: "Using <strong>irradiance fields</strong> to calculate <strong>real-time multi-bounce indirect lighting</strong> and using <strong>Chebyshev-based probe visibility tests</strong> on stored <strong>ray-hit distances</strong> to prevent <strong>light leaking</strong>."
     icon: "fas fa-lightbulb"
