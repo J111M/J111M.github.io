@@ -3,6 +3,10 @@ title: "Wild engine"
 description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>volumetric fog</strong>, <strong>procedural island generation</strong>, <strong>ocean rendering</strong>, and <strong>procedural grass</strong>."
 image: /assets/img/posts/ocean/ship.gif
 features:
+  - title: "Dynamic Diffuse Global Illumination"
+    text: "Using <strong>irradiance fields</strong> to calculate <strong>real-time multi-bounce indirect lighting</strong> and using <strong>Chebyshev-based probe visibility tests</strong> on stored <strong>ray-hit distances</strong> to prevent <strong>light leaking</strong>."
+    icon: "fas fa-lightbulb"
+    video: "/assets/img/projects/wild/DDGI_Showcase.mp4"
   - title: "Cascaded shadow maps" 
     text: "Directional <strong>shadow maps</strong> rendered across multiple <strong>cascades</strong>, each capturing the appropriate level of detail for its distance range. Sampled using <strong>PCF filtering</strong> for extra sharp edges."
     icon: "fas fa-sun"
@@ -15,10 +19,6 @@ features:
     text: "Island generation with <strong>layered noise</strong>, colored based on <strong>slope steepness</strong> combined with <strong>height-based coloring</strong>. The textures are sampled using <strong>tri-planar methods</strong> to ensure they are not stretched out. To achieve the island look I reduce the noise on the edge of the <strong>height map</strong>."
     icon: "fas fa-mountain"
     video: "/assets/img/projects/wild/islandgeneration.mp4"
-  - title: "Modified my procedural grass system to integrate with the height map of the island"
-    text: "The grass system's blades are offset by the <strong>height map</strong> and are only drawn on the <strong>grass texture</strong>."
-    icon: "fas fa-seedling"
-    video: "/assets/img/projects/wild/grassterrain.mp4"
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12
@@ -42,6 +42,6 @@ The project uses **G-Buffer** style rendering with **PBR** shading and **image-b
 - **ImGui** integration for engine layout, allowing **real-time modifications**
 
 <video controls width="600">
-  <source src="/assets/img/projects/wild/bistro.mp4" type="video/mp4">
+  <source src="/assets/img/projects/wild/cyber.mp4" type="video/mp4">
 </video>
 
