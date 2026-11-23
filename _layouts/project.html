@@ -66,6 +66,81 @@ layout: default
       transform: translateY(-4px);
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
     }
+
+    /* Before/after image slider: feature.compare */
+    .compare-slider {
+      --pos: 50%;
+      position: relative;
+      margin: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+      user-select: none;
+    }
+    .compare-slider img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      margin: 0;
+      /* Chirpy animates every img (transition: all .35s), which makes the slider lag */
+      transition: none;
+    }
+    .compare-slider .compare-before {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+      will-change: clip-path;
+    }
+    .compare-slider .compare-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--pos);
+      width: 2px;
+      transform: translateX(-50%);
+      background: #fff;
+      box-shadow: 0 0 4px rgba(0, 0, 0, .6);
+      pointer-events: none;
+    }
+    .compare-slider .compare-handle::after {
+      content: "\2194";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 34px;
+      height: 34px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #fff;
+      color: #1b1b1e;
+      font-size: 18px;
+      line-height: 34px;
+      text-align: center;
+      box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    }
+    .compare-slider .compare-label {
+      position: absolute;
+      top: 8px;
+      padding: 2px 10px;
+      border-radius: 6px;
+      background: rgba(0, 0, 0, .65);
+      color: #fff;
+      font-size: .8rem;
+      font-weight: 600;
+      pointer-events: none;
+    }
+    .compare-slider .compare-label--before { left: 8px; }
+    .compare-slider .compare-label--after { right: 8px; }
+    .compare-slider input[type="range"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+      cursor: ew-resize;
+      touch-action: pan-y;
+    }
   </style>
   <section class="mt-4 mb-4">
     <h2 class="mb-3" style="font-size: 1.4rem;">My contributions</h2>
@@ -82,7 +157,18 @@ layout: default
                 {{ feature.text }}
               </p>
             </div>
-            {% if feature.video %}
+            {% if feature.compare %}
+              <div class="feature-media-container">
+                <div class="compare-slider">
+                  <img src="{{ feature.compare.after | relative_url }}" class="no-popup" alt="{{ feature.compare.after_label | default: 'After' }}">
+                  <img src="{{ feature.compare.before | relative_url }}" class="compare-before no-popup" alt="{{ feature.compare.before_label | default: 'Before' }}">
+                  {% if feature.compare.before_label %}<span class="compare-label compare-label--before">{{ feature.compare.before_label }}</span>{% endif %}
+                  {% if feature.compare.after_label %}<span class="compare-label compare-label--after">{{ feature.compare.after_label }}</span>{% endif %}
+                  <div class="compare-handle"></div>
+                  <input type="range" min="0" max="100" value="50" step="0.1" aria-label="Slide to compare {{ feature.compare.before_label | default: 'before' }} and {{ feature.compare.after_label | default: 'after' }}" oninput="this.parentNode.style.setProperty('--pos', this.value + '%')">
+                </div>
+              </div>
+            {% elsif feature.video %}
               <div class="feature-media-container">
                 <video controls muted class="feature-media">
                   <source src="{{ feature.video | relative_url }}" type="video/mp4">

@@ -1,16 +1,17 @@
 ---
-title: "Wild engine"
-description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>volumetric fog</strong>, <strong>procedural island generation</strong>, <strong>ocean rendering</strong>, and <strong>procedural grass</strong>."
+title: "Custom engine | Wild engine"
+description: "Personal <strong>DirectX 12 framework</strong> for researching <strong>rendering techniques</strong> like <strong>dynamic diffuse global illumination</strong> using <strong>irradiance fields</strong>, <strong>volumetric fog</strong>, <strong>procedural island generation</strong> and <strong>ocean rendering</strong>."
 image: /assets/img/posts/ocean/ship.gif
+video: /assets/img/projects/wild/engine_showcase.mp4
 features:
+  - title: "Dynamic Diffuse Global Illumination"
+    text: "Using <strong>DXR hardware ray tracing</strong> to trace rays from the probes of an <strong>irradiance field</strong> to calculate <strong>real-time multi-bounce indirect lighting</strong>. <strong>Chebyshev-based probe visibility tests</strong> on the stored <strong>ray-hit distances</strong> prevent <strong>light leaking</strong>."
+    icon: "fas fa-lightbulb"
+    video: "/assets/img/projects/wild/DDGI_Showcase.mp4"
   - title: "Two-Pass Meshlet HZB Occlusion Culling"
     text: "GPU-driven <strong>two-pass occlusion culling</strong> per meshlet, combining <strong>frustum</strong>, <strong>normal-cone backface</strong> and <strong>Hi-Z occlusion</strong> tests in a single <strong>amplification-shader</strong> pass to skip hidden geometry before mesh shading."
     icon: "fas fa-eye-slash"
     video: "/assets/img/projects/wild/hzboc.mp4"
-  - title: "Dynamic Diffuse Global Illumination"
-    text: "Using <strong>irradiance fields</strong> to calculate <strong>real-time multi-bounce indirect lighting</strong> and using <strong>Chebyshev-based probe visibility tests</strong> on stored <strong>ray-hit distances</strong> to prevent <strong>light leaking</strong>."
-    icon: "fas fa-lightbulb"
-    video: "/assets/img/projects/wild/DDGI_Showcase.mp4"
   - title: "Cascaded shadow maps" 
     text: "Directional <strong>shadow maps</strong> rendered across multiple <strong>cascades</strong>, each capturing the appropriate level of detail for its distance range. Sampled using <strong>PCF filtering</strong> for extra sharp edges."
     icon: "fas fa-sun"
@@ -19,10 +20,10 @@ features:
     text: "<strong>Ray marched</strong> volumetric fog with <strong>god rays</strong> sampled from <strong>cascaded shadow maps</strong>. I'm currently working on <strong>froxel-based volumetric fog</strong> to improve performance."
     icon: "fas fa-smog"
     video: "/assets/img/projects/wild/volumetrics.mp4"
-  - title: "Procedural terrain system"
-    text: "Island generation with <strong>layered noise</strong>, colored based on <strong>slope steepness</strong> combined with <strong>height-based coloring</strong>. The textures are sampled using <strong>tri-planar methods</strong> to ensure they are not stretched out. To achieve the island look I reduce the noise on the edge of the <strong>height map</strong>."
+  - title: "Procedural terrain & ocean rendering"
+    text: "Island generation with <strong>layered noise</strong>, colored based on <strong>slope steepness</strong> combined with <strong>height-based coloring</strong>. The textures are sampled using <strong>tri-planar methods</strong> to ensure they are not stretched out. To achieve the island look I reduce the noise on the edge of the <strong>height map</strong>. The island is surrounded by the <strong>FFT ocean</strong> I ported from my <a href=\"/projects/Ocean-Simulation/\">PS5 project</a>, with improved <strong>shading</strong> and <strong>ocean cascades</strong>."
     icon: "fas fa-mountain"
-    video: "/assets/img/projects/wild/islandgeneration.mp4"
+    image: "/assets/img/posts/ocean/ship.gif"
 tags:
   - 🚀 Personal
   - 🔧 DirectX 12
@@ -33,7 +34,7 @@ order: 1
 gameplay: true
 ---
 
-This is my custom **DirectX 12** rendering engine built from scratch in **C++**, designed as a personal playground for implementing real-time rendering techniques inspired by games like The Legend of Zelda: Breath of the Wild and Sea of Thieves. The engine fully **abstracts** the **DirectX 12 API**, from **device** and **swapchain** management to **command lists**, **root signatures**, **pipeline state objects**, and **descriptor heaps**, providing a clean interface for building render passes without touching raw D3D12 calls. Built over six months as a solo project, whenever I see a cool feature in a game I play, I wan't to know how it is created.
+This is my custom **DirectX 12** rendering engine built from scratch in **C++**, designed as a personal playground for implementing real-time rendering techniques inspired by games like The Legend of Zelda: Breath of the Wild and Sea of Thieves. The engine fully **abstracts** the **DirectX 12 API**, from **device** and **swapchain** management to **command lists**, **root signatures**, **pipeline state objects**, and **descriptor heaps**, providing a clean interface for building render passes without touching raw D3D12 calls. Built as a solo project, whenever I see a cool feature in a game I play, I wan't to know how it is created.
 
 The project uses **G-Buffer** style rendering with **PBR** shading and **image-based lighting**. All textures are accessed via **bindless** techniques. Shaders are written in **HLSL**, compiled with **Slang**, and the project is built with **CMake**.
 

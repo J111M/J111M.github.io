@@ -43,7 +43,11 @@ layout: default
     <div class="col">
       <article class="card h-100 project-card">
         <a href="{{ project.url | relative_url }}" class="text-decoration-none">
-          {% if project.image %}
+          {% if project.video %}
+            <video class="card-img-top" autoplay muted loop playsinline poster="{{ project.image | relative_url }}">
+              <source src="{{ project.video | relative_url }}" type="video/mp4">
+            </video>
+          {% elsif project.image %}
             <img src="{{ project.image | relative_url }}" class="card-img-top no-popup" alt="{{ project.title }}">
           {% endif %}
           <div class="card-body">
