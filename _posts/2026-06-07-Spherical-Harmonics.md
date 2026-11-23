@@ -7,6 +7,7 @@ tags: [lighting, radiance]
 image:
   path: /assets/img/posts/sh/mag.gif
   alt: DDGI
+hidden: true
 ---
 
 ## Exploring spherical harmonics fo DDGI

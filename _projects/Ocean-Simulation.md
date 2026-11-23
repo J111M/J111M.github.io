@@ -8,7 +8,7 @@ tags:
   - 👤 Solo
   - 💻 Console
   - ⏱️ 8 weeks
-order: 6
+order: 7
 ---
 
 The gif above is a **ported version** to my **DirectX 12 engine** with improvements like better **shading** and **ocean cascades**. In the future I plan to add **interaction with the ocean** through **displacement**, like when rain hits the water or an object enters it, as well as **buoyancy** so objects float with the waves.
