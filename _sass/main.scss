@@ -405,6 +405,17 @@ footer {
   }
 }
 
+// project page showcase video
+// Don't rely on Bootstrap's .img-fluid: the production CSS bundle uses a
+// purged Bootstrap that doesn't include it, so the video would render at
+// its native resolution.
+.project-hero-video {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
 // project video
 .popup.img-link.shimmer {
   width: 60% !important;
